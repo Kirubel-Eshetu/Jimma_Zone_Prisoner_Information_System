@@ -31,3 +31,24 @@ is implemented through a website. The website serves a range of functionalities 
 ➢ Integrated face-detection and matching system.
 
 ➢ Management of prison cell.
+
+Since the system was developed for a final year project defense, a detailed documentation was also made. The documentation of the project was presented in two phases: 
+
+-> System Design and
+-> Implementaiton. 
+
+--The documentation is the manual that can help you to understand and use the system. Since the system is open source, you can see the system's blueprint through this documentation. 
+
+--The documentation contains the following chapters:
+
+-> Introduction to the proposal of the system
+
+-> Requirement Analysis and Specification
+
+-> System Design
+
+-> Implementation and Testing 
+
+-> Conclusions and Recommendations
+
+:) Take a look at the documentation for yourself: https://github.com/Kira-Legacy/Jimma_Zone_Prisoner_Information_System/blob/main/pdf/FYP-II%20Document%20JZPIS%20final.pdf
