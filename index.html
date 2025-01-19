@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prisoner infromation system website">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="images/pis-overview.jpg">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="images/logojpcrop.jpg" alt="Logo" width="100%" height="135px">
+            </div>
+            <div class="title">
+                <h1><br>Jimma Zone Prisoner Information System</h1>
+            </div>
+
+            <div class="prisoner_image">
+                <img src="images/prisoner-image.jpg" alt="Image of Prisoner" width="100%" height="135px">
+            </div>
+        </div>
+    </header>
+
+    <nav class="linknav">
+        <ul>
+            <li><a href="#home-click" class="link">Home</a></li>
+            <li><a href="#languages" class="link">Language</a>
+                <ul id="languages">
+                    <li>
+                        <div id="google_translate_element"></div>
+                    </li>
+                </ul>
+        </ul>
+        </li>
+        <li><a target="_self" href="login.php" id="button" class="link">Login</a></li>
+        <li><a target="_self" href="about-us.html" class="link">About Us</a></li>
+        <li><a href="contact-us.html" class="link">Contact Us</a></li>
+        </ul>
+    </nav><br><br><br>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: "en",
+                    includedLanguages: "en,am,om",
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    autoDisplay: false,
+                },
+                "google_translate_element"
+            );
+
+            // Ensure the specific paragraph always displays in English
+            var englishParagraph = document.getElementById("english_paragraph");
+            if (englishParagraph) {
+                google.translate.TranslateElement(
+                    { pageLanguage: "en" },
+                    "english_paragraph"
+                );
+            }
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <div class="supercontainer">
+        <div class="additional">
+            <aside>
+                <p style="margin-left: -4.5px;"><strong>Additional Links</strong></p>
+                <a href="mission.html" style="margin-left: 30px;">Mission</a>
+                <a href="information.html" style="margin-left: 13.5px;">Information</a>
+                <a href="updates.html" style="margin-left: 30px;">Updates</a>
+
+            </aside>
+        </div>
+
+        <div class="imagesarea">
+            <section>
+                <div class="container" id="home-click">
+                    <div class="outside_of_prison">
+                        <img src="Images/logojp.jpg" alt="Jimma Prison Administration" width="100%" height="400px">
+                    </div>
+                    <div class="police">
+                        <img src="Images/ethiopian-police.jpg" alt="Picture of Ethiopian Police" width="100%"
+                            height="400px">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="description">
+
+        <p>: This prisoner Information System is developed for
+            <strong>Jimma Prison Administration.</strong>
+        </p>
+    </div>
+
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.9561266308656!2d36.848310174198!3d7.687857692329307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x17adb9d499c7c769%3A0x137e3862fb165406!2sMana%20Sirreessaa%20Magaalaa%20Jimmaa!5e0!3m2!1sen!2set!4v1710157826446!5m2!1sen!2set"
+            width="80%" height="100%" style="border:0;" allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="time-container">
+        <div id="datetime"></div>
+        <script>
+            function updateTime() {
+                // Get the current date and time
+                var now = new Date();
+
+                // Format the date and time
+                var date = now.toDateString();
+                var time = now.toLocaleTimeString();
+
+                // Update the HTML content
+                document.getElementById('datetime').innerHTML = 'Date: ' + date + '<br>Time: ' + time;
+            }
+
+            // Call updateTime function to display initial date and time
+            updateTime();
+            // Update the time every second (1000 milliseconds)
+            setInterval(updateTime, 1000);
+        </script>
+    </div>
+
+    <footer>
+        <p>Jimma Zone Prisoner Information System
+            <br>@Jimma Zone Prison Administration <br>
+            All rights recieved
+        </p>
+    </footer>
+
+
+
+</body>
+
+</html>

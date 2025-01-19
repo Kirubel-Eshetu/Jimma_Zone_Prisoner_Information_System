@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Desk</title>
+    <style>
+        body {
+            background-color: rgb(245, 220, 188);
+            margin: 0;
+            padding: 0;
+        }
+
+        .logo {
+            width: 30%;
+        }
+
+        .title {
+            width: 40%;
+            justify-content: center;
+            background-color: rgb(200, 200, 238);
+            color: black;
+            font-size: 15px;
+            text-align: center;
+            height: 135.5px;
+        }
+
+        .prisoner_image {
+            width: 30%;
+            height: 135.5px;
+        }
+
+
+
+        .header {
+            display: flex;
+            margin-bottom: -20px;
+        }
+
+        .homecontainer {
+            margin-top: 31px;
+            margin-left: 200px;
+        }
+
+        .not {
+            background-color: rgb(251, 255, 0);
+            text-decoration: none;
+            font-size: 30px;
+            padding: 15px 60px;
+        }
+
+        .not:hover {
+            background-color: aqua;
+
+        }
+
+        .store {
+            display: flex;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            margin-top: 30px;
+        }
+
+        .linknav {
+            margin-left: -50px;
+        }
+
+        .linknav ul {
+            list-style: none;
+            width: 100%;
+        }
+
+        .linknav li {
+            float: left;
+            position: relative;
+            width: auto;
+            list-style: none;
+        }
+
+        .linknav a {
+            background-color: rgb(251, 255, 0);
+            display: block;
+            padding: 15px 40px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 30px;
+            color: blue;
+            transition: all 0.2s ease;
+            font-weight: 540;
+        }
+
+        .linknav li a:hover {
+            background-color: rgb(0, 255, 234);
+        }
+
+        .goog-te-gadget img {
+            display: none !important;
+        }
+
+        .goog-te-combo {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Style the dropdown arrow */
+        .goog-te-combo-arrow {
+            display: none;
+            /* Hide the default dropdown arrow */
+        }
+
+        /* Style the language options */
+        .goog-te-menu-value {
+            font-size: 14px;
+            color: #333;
+        }
+
+        #languages {
+            opacity: 0;
+            position: absolute;
+            visibility: hidden;
+            z-index: 1;
+        }
+
+        li:hover #languages {
+            opacity: 1;
+            top: 60px;
+            left: -40px;
+            visibility: visible;
+        }
+
+        #languages li a:hover {
+            background-color: rgb(253, 143, 0);
+        }
+
+        #languages li {
+            width: 100%;
+        }
+
+        .aside-class {
+            width: 1900px;
+
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .div-body {
+            margin-right: 25px;
+            text-align: justify;
+            margin-top: -10px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: rgb(41, 41, 41);
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 17px;
+            margin-bottom: -30px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="images/logojpcrop.jpg" alt="Logo" width="100%" height="135px">
+            </div>
+            <div class="title">
+                <h1><br>Jimma Zone Prisoner Information System</h1>
+            </div>
+
+            <div class="prisoner_image">
+                <img src="images/prisoner-image.jpg" alt="Image of Prisoner" width="100%" height="135px">
+            </div>
+        </div>
+    </header>
+
+    <div class="store">
+        <div class="homecontainer">
+            <a href="index.html" class="not">Home</a>
+        </div>
+        <nav class="linknav">
+            <ul>
+                <li><a href="#languages" class="link">Language</a>
+                    <ul id="languages">
+                        <li>
+                            <div id="google_translate_element"></div>
+                        </li>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement(
+                                    {
+                                        pageLanguage: "en",
+                                        includedLanguages: "en,am,om",
+                                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                                        autoDisplay: false,
+                                    },
+                                    "google_translate_element"
+                                );
+
+                                // Ensure the specific paragraph always displays in English
+                                var englishParagraph = document.getElementById("english_paragraph");
+                                if (englishParagraph) {
+                                    google.translate.TranslateElement(
+                                        { pageLanguage: "en" },
+                                        "english_paragraph"
+                                    );
+                                }
+                            }
+                        </script>
+                        <script type="text/javascript"
+                            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    </div>
+    </li>
+    </ul>
+    </nav>
+    <div class="container">
+        <div class="aside-class">
+            <nav>
+                <h2 style="text-align: center;">Contents</h2>
+                <ul>
+                    <li><a href="#services">Services provided by our facility</a><br></li><br>
+                    <li><a href="#visitor">Visitor Guidelines & Information</a><br></li><br>
+                    <li><a href="#communicate">Communicate With People in Prison</a><br></li><br>
+                    <li><a href="#telephone">Telephone Communication</a><br></li><br>
+                    <li><a href="#send">Send Money to People in Prison</a><br></li><br>
+                    <li><a href="#mail">Mail</a><br></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="div-body">
+
+            <h1 style="text-align:center">Jimma Zone Prison Administration Information Desk</h1>
+            <div style="text-align: center;">
+                <img src="images/Information-desk.jpg" alt="Information Desk">
+            </div>
+            <h2 id="services" style="text-align:center;">Services provided by our facility</h2>
+            <p style="font-size: 20px; line-height: 30px;">With an adequate capacity to protect the human rights of the
+                convict, the
+                basic needs of food and shelter, bed linen, free medical services, and government hospital services
+                are provided.
+                Our institution aspires to make inmates a law-abiding and a good citizen.
+            <p style="font-size: 20px;">Within our facility the following services are provided:</p>
+            <ul type="disc" style="font-size: 20px; line-height: 30px;">
+                <li>Waiting for the prisoners to be sentenced in accordance with the court order or decision, bringing
+                    the inmates to court,</li>
+                <li>Correction and edification of inmates,</li>
+                <li>Protecting the prisoners,</li>
+                <li>Providing food and shelter for prisoners,</li>
+                <li>Carry out essential tasks for the mind and body care of prisoners.</li>
+                <li>After the inmates are released, they will be able to manage their own education, vocational
+                    training, social and advisory services to help them manage themselves and become law-abiding.</li>
+                <li>When ordered by the court to bring in inmates from federal penitentiaries to regions or from one
+                    prison to another,</li>
+                <li>Collecting and consolidating national prisoners' information and statistics.</li>
+                <li>According to the law, prisoners are released on probation,</li>
+                <li>According to the law, convicts may give permission to the authorities to remedy pardon,</li>
+                <li>Work with regional prisons and provide vocational, technical and advisory support.</li>
+            </ul>
+            </p>
+            <h2 id="visitor" style="text-align: center;">Visitor Guidelines & Information</h2>
+            <div style="text-align: center;">
+                <img src="images/Vistor Stay area.jpg" alt="Visitor Stay Area" width="85%">
+            </div>
+            <p style="font-size: 20px; line-height: 30px;">
+                Visitation with people committed to the Ethiopia Department of Public Safety & Corrections (DPS&C) is
+                a privilege. Visitation may be restricted, denied or suspended if an imprisoned person and/or
+                visitor does not follow the Department's visitation rules.
+                <br>Prospective visitors may refer to Department Regulation OP-C-9 for specific rules governing
+                visitation. The regulation may also be obtained by requesting a copy from the facility. Items
+                considered to be contraband, including any type of weapon, firearm or any other item detrimental to
+                the security of the facility, are not allowed. Prohibited items and other personal possessions
+                (wallet, purse, cash, etc.) must be left in the visitor's locker bulit for visitor's stuffs for the
+                duration of the visit.
+                <br>The following are the rules that a visitor must follow in order to be allowed to visit an
+                inmate in our facility:
+            <ol style="font-size: 20px;">
+                <li><strong>Visiting List:</strong> In order to visit a person in prison, the visitor must be on
+                    the person's approved visiting list. The imprisoned person has been given information on how
+                    to add someone to their visiting list. If you are uncertain as to whether you are on a person
+                    in prison's approved visiting list, please contact the person you wish to visit. Do not call
+                    the facility for this information; it will not be provided over the phone.</li><br>
+                <li><strong>Searches:</strong> All visitors, including minors, are subject to searches of their
+                    property,
+                    automobile and person. These searches shall be conducted by trained staff in a professional
+                    manner that minimizes indignity to the visitor while still accomplishing the objective of the
+                    search. Additionally, visitors shall be subject to additional searches using metal detectors
+                    and ion scanning equipment. Any person refusing to be searched at any time shall not be
+                    permitted to enter the facility and a visit may be terminated if a visitor refuses to be
+                    searched, or if contraband or other prohibited property or items are found on the visitor
+                    or in the visitor's property. If a visitor does not wish to be searched either by hand or
+                    by using other means, the visitor should not attempt to enter a DPS&C facility.</li><br>
+                <li><strong>Registration:</strong> Visitors must be registered by staff prior to entering the
+                    visiting area.</li><br>
+                <li><strong>Identification:</strong> All visitors who are 18 years old or older shall be required
+                    to show an identification card(id) the first time they visit the facility. After the first
+                    time of visit our system will store the picture of the visitor's identification card(id).
+                    <br>The forms of identification accepted by the DPS&C are:
+                    <ul>
+                        <li>Valid driver's license from the state of residence</li>
+                        <li>Valid state identification card from the state of residence</li>
+                        <li>Valid military identification card (active duty only)</li>
+                        <li>Valid passport</li>
+                    </ul>
+                </li><br>
+                <li><strong>Children:</strong> Visitors under the age of 18 years of age must be accompanied by
+                    their parent or legal guardian at all times while on facility grounds. Children shall not be
+                    left alone at any time while on facility grounds. Parents or legal guardians shall be
+                    responsible for the behavior of their children and a visit may be terminated if the children
+                    become disruptive.</li><br>
+                <li><strong>Dress standards:</strong> Visitors shall wear clothing that poses no threat to the
+                    security or maintenance of order at the facility.
+                    <br>The following standards are to be met:
+                    <ul>
+                        <li>Clothing that is similar in appearance to the clothing worn by imprisoned people is
+                            prohibited.</li>
+                        <li>Clothing that is similar in appearance to the clothing worn by correctional officers, i.e.
+                            camouflage, blue BDU's, etc. is prohibited.</li>
+                        <li>Sheer or transparent clothing is not permitted.</li>
+                        <li>Swim suits are not permitted.</li>
+                        <li>Skirts, shorts, skorts, culottes, and dresses must be no shorter than three inches
+                            above the kneecap and not have deep or revealing slits.</li>
+                        <li>Strapless, tube and halter tops, tank tops, and strapless dresses are not
+                            permitted.</li>
+                        <li>Tops that expose the midriff are not permitted.</li>
+                        <li>Tight fitting pants, such as stirrup, spandex, lycra, or spandex-like athletic pants,
+                            aerobic/exercise tights or leotards shall not be worn.</li>
+                        <li>Undergarments must be worn at all times and cannot be exposed.</li>
+                        <li>Clothing with revealing holes or tears higher than one inch above the kneecap is not
+                            permitted.</li>
+                        <li>Clothing or accessories with obscene or profane writing, images, or pictures is not
+                            permitted.</li>
+                        <li>Gang or club-related clothing or insignia indicative of gang affiliation is not
+                            permitted.</li>
+                        <li>Shoes must be worn at all times. Except for infants who are carried, house slippers
+                            or shower shoes are not allowed.</li>
+                        <li>Hats or other head coverings are not permitted, except as required by religious
+                            beliefs.</li>
+                    </ul>
+                </li>
+                <li><strong>Items not permitted:</strong> Visitors shall not be permitted to possess or carry the
+                    following items into the visiting area: controlled substances, alcoholic beverages, marijuana,
+                    tobacco and tobacco related items, cameras, video, and audio recording equipment and
+                    electronic devices, including but not limited to cellular telephones, pagers, BlackBerries,
+                    radios, tape recorders, etc.</li><br>
+                <li><strong>Medication:</strong> Only prescribed medication that is life-saving or life-sustaining,
+                    such as nitroglycerine pills, inhalers, oxygen, etc., shall be permitted. Medication shall be
+                    limited in quantity to no more than that required for the duration of the visit. Visitors must
+                    inform the staff at the visiting desk that they are in possession of such medication.</li><br>
+                <li><strong>Infants:</strong> If the visitor has an infant child, the following items shall be
+                    permitted: four diapers, two jars of vacuum sealed baby food, two plastic bottles of milk or
+                    juice, one change of clothing, one baby blanket (maximum width and length not to exceed 48
+                    inches), and one clear plastic bag of baby wipes. These items, except the baby blanket, must
+                    be stored in a single clear plastic container (i.e., gallon size zip-lock bag.) All items are
+                    subject to search.</li><br>
+                <li><strong>Money:</strong> Visitors shall not give any money to an imprisoned person. All
+                    state correctional facilities utilize Telebirr for money deposits to people in prison.
+                    Telebirr allows family members and friends to make a deposit to a person in prison's account
+                    in a number of ways via Ethio-telecom shops, mail, internet, telephone, kiosks at the correctional
+                    facility,
+                    and Moneygram locations.</li><br>
+                <li><strong>Contact between people in prison and visitors:</strong> People in prison who have
+                    contact visits may embrace (hug) and exchange a brief kiss, to indicate fondness, not a
+                    lingering kiss, with their visitor at beginning and end of the visit. During the visit,
+                    the only contact permitted is holding hands. Excessive displays of affection or
+                    sexual misconduct between people in prison and visitors is strictly prohibited. Small
+                    children may be permitted to sit on the lap of the visitor or person in prison.
+                    Any improper contact between a person in prison and visitor shall be grounds for stopping
+                    the visit immediately. Some people in prison are restricted to non-contact visits. In
+                    these cases, there shall be no physical contact or touching at all between the person in
+                    prison and the visitors. Restroom breaks may be authorized, however, visitors will
+                    be subject to the entire search process again.</li><br>
+                <li><strong>Restrictions on visits with minors:</strong> People in prison who have a current or
+                    prior conviction for a sex crime involving a minor child family member, or who have a
+                    documented history of sex abuse with a minor child family member, are ineligible to visit
+                    with any minor child, including their own biological or step-child. People in prison who have
+                    a current or prior conviction for a sex crime involving a minor child who is not a family
+                    member are ineligible to visit with any minor child. The imprisoned people affected by these
+                    restrictions have been informed of possible exceptions that may only be approved by the
+                    warden.</li><br>
+                <li><strong>Generally prohibited:</strong> The giving or receiving of any item(s) to/from a person
+                    in prison without the prior approval of staff is prohibited. Violators are subject to arrest
+                    and criminal prosecution and suspension of visiting privileges. The only exception is that the
+                    visitor may purchase soft drinks, snacks or concessions in the visiting area and share them
+                    with the person in prison. The person in prison is not permitted to take anything out of the
+                    visiting area when the visit is finished, other than with approval as noted above.</li><br>
+                <li><strong>Visiting hours:</strong> The visiting hours are from 9:00 am to 6:00 pm. The duration
+                    of time allowed for a visitor is 2 hours.</li><br>
+                <li><strong>Public transportation:</strong> Some DPS&C facilities have public transportation
+                    available to the facility. Information is provided at the facility to the people in prison if
+                    public transportation is available. There may be a cost for use of this transportation and
+                    the DPS&C does not endorse or claim any liability for the use of the transportation provider.
+                    The visitor may contact the person they wish to visit in prison to obtain specific
+                    information regarding any types of transportation that may be available to the facility
+                    where the person is housed. </li><br>
+                <li><strong>Directions:</strong> Driving directions may be found on our page or in Google maps.
+                </li><br>
+                <li><strong>Other specific information provided by the person in prison or facility:</strong>
+                    Contact the imprisoned person you are visiting or the facility for other permissible items,
+                    special visit procedures, and availability of picnic visits.</li><br>
+                <li><strong>Termination of visits:</strong> The warden of the facility or staff designated by the
+                    warden may terminate a visit at any time if they believe that ending the visit is in the best
+                    interest
+                    of the safety and security of the facility or the persons involved.</li><br>
+                <li><strong>Request for ADA accommodations:</strong> For ADA accommodations, please contact the
+                    facility in advance of your visit.</li>
+            </ol>
+            <h2 id="communicate" style="text-align:center;">Communicate With People in Prison</h2>
+            <p style="font-size: 20px;">The Department encourages positive communication between people in prison and
+                family
+                members/friends. As such, DPS&C offers several avenues of communication for people assigned to
+                state correctional facilities. People in prison may communicate via secure telephones.
+                Family members may also send money to people in DPS&C custody.</p>
+            <h3 style="text-align:center;" id="telephone">Telephone Communication</h3>
+            <p style="font-size: 20px; line-height: 30px;">Dept. Regulation No. B-08-001 allows for each imprisoned
+                person to have an
+                approved master list of up to twenty (20) telephone numbers for family, friends, and legal calls.
+                An imprisoned person can update the list on a quarterly basis. If a person in prison attempts to dial
+                any telephone number not on his/her approved list from a state correctional facility, the call is
+                automatically blocked. Individual telephone numbers can be blocked as well. <br>Members of the public
+                can
+                contact the facility directly or the Office of Adult Services (<a href="tel: +251900000994">
+                    +251900000994</a>) if they are receiving unwanted or harassing phone calls from imprisoned people at
+                state correctional facilities.People in prison can only make collect calls and prison telephones are
+                limited to out-going calls only. Calls are usually limited to 15 minutes. No one can make a call
+                to a prison telephone. <br> When a person in prison makes a call, the called party is notified that it
+                is a collect call from a person at a state prison facility. The called party is given the option of
+                accepting the call or refusing it by hanging up. Telephone communication access is provided by Ethio
+                Telecom. Securus' Customer Service number is <a href="tel: +251900000994">+251900000994</a> for
+                individuals needing assistance with billing issues, problems receiving calls from people in prison,
+                receiving unwanted calls and/or requesting a block on future calls from an individual(s) in prison.
+                <br>The Department allows people in prison to call approved cell phone numbers under specific
+                guidelines.
+                The called party must set up an account with Securus and provide their primary residence information.
+                Calls to prepaid cell phones are not allowed. The imprisoned individual must have your cell phone
+                number on his/her approved phone list.
+            </p>
+            <h3 id="send" style="text-align: center;">Send Money to People in Prison</h3>
+            <p style="font-size: 20px;">Family and friends can send funds to people in prison through banks advance
+                Telebirr. When sending money the many should be credited to the account number of the facility with
+                the prisoner name on it. That way the facility can address the money send to the inmate properly.
+            </p>
+            <h3 id="mail" style="text-align: center;">Mail</h3>
+            <p style="font-size: 20px;">Family and friends may continue to send money orders via mail. There is
+                no charge for sending money orders via mail. Telebirr requires a Telebirr deposit slip to accompany
+                the money order. This deposit is mailed to Telebirr Jimma, Jimma address. This means that mail time to
+                Jimma is probably longer than to a DPS&C facility and that should be taken into account when mailing
+                funds.</p>
+            </p>
+            <p></p>
+        </div>
+    </div>
+</body>
+
+<footer>
+    <p>Jimma Prisoner Information System
+        <br>@Jimma Prison Administraion <br>
+        All rights recieved
+    </p>
+</footer>
+
+</html>

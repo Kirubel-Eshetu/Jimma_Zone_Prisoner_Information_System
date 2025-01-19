@@ -1,0 +1,106 @@
+                    Face-matching alogrithm
+A training pipeline in the context of machine learning refers to the sequence of steps or processes involved in training a machine learning model. It encompasses all the stages from preparing the data to evaluating the trained model's performance. 
+In the face-detection and matching algorithm, we used the tensorflow library to create a neural network that can be used to 
+classify between different prisoners.
+		Steps we followed while making face-detection and matching algorithm
+1. Prepare dataset: we have prepared a dataset of 840 images that are representation
+of prisoners registered on the system along with their corresponding labels.
+2. Load the dataset: with the dataset prepared, we have loaded the images into the data structure that the code can work with and proceed to training.
+3. Train the model: we have trained the model with Tensorflow CNN (Convolutional Neural Network) and created our own CNN. The training went on with the prepared
+dataset until it can classify between images recieved as input. We started by separating the dataset into train_set (90%) and 
+test_set (10%) which are used for training and validation respectively.
+    Upon training:
+    1. We have trained the model through 100 times
+    2. Performed validation and get accuracy
+    3. Saved the model
+4. Power the model with Django: load the model into a Django website by making sure that django can use it to perform predicitons.
+
+        Here are the tools we have used
+-Python 3.10: The Python Programming Language.
+-Django : The Web Framework for Python.
+-TensorFlow: The TensorFlow Machine Learning Library used to create the neural network .
+
+System testing is a level of software testing where the complete and integrated software system is tested as a whole.
+The purpose of system testing is to validate that the software system meets its specified requirements and functions correctly in its intended environment.
+
+System Testing
+
+Splitting a dataset into training and testing sets is a common practice in machine learning. Here's what it means:
+
+Training Set: This is the portion of the dataset used to train the machine learning model. The model learns patterns, relationships, and features from the data in the training set. In your case, it comprises 90% of the original dataset.
+
+Test Set: This is a separate portion of the dataset that is not seen by the model during training. It is used to evaluate the performance of the trained model and assess how well it generalizes to new, unseen data. In your case, it comprises 10% of the original dataset.
+
+
+Model Performance Evaluation involves assessing how well a trained machine learning model performs on unseen data. This evaluation is crucial for understanding the model's effectiveness and its ability to generalize to new instances.
+
+
+Evaluation metrics are quantitative measures used to assess the performance of a machine learning model. These metrics provide insights into how well the model is performing on a given task.
+
+Accuracy is one of the most commonly used metrics for evaluating the performance of classification models. It measures the proportion of correctly classified instances out of the total number of instances.
+common classification metrics such as accuracy, precision, recall
+
+Backup
+
+Training pipeline for the system, considering the dataset size:
+A. Data Collection and Preparation: Collect data from the existing Access database, including prisoner information, visitor records, user accounts, etc. Prepare the dataset by cleaning, formatting, and transforming the data as necessary. Handle any missing values and perform encoding for categorical variables. Given the nature of the system, the dataset might not be very large, but it should encompass sufficient samples to represent various scenarios.
+B. Exploratory Data Analysis (EDA): Conduct EDA to understand the distribution and characteristics of the data. Generate summary statistics and visualizations to identify patterns, outliers, and relationships between variables. Since the dataset size might not be very large, EDA could be performed efficiently using tools like pandas, matplotlib, and seaborn in Python.
+C. Feature Engineering: Based on the business rules and functional requirements, engineer features such as age groups for prisoners, authentication method indicators, room assignments, etc. Transform variables as needed to improve model performance.
+D. Model Selection and Training: Choose appropriate machine learning models for tasks such as user authentication, parole assessment, etc. Due to the relatively smaller dataset size, models like logistic regression, decision trees, or random forests might be suitable for training. Utilize techniques like cross-validation to assess model performance and mitigate overfitting. Train the models using the prepared dataset.
+E. Model Evaluation: Evaluate the trained models using appropriate metrics such as accuracy, precision, recall, etc. Since the dataset might not be very large, holdout validation or cross-validation can be used effectively.
+F. Model Deployment: Deploy the trained models into the proposed system infrastructure, ensuring compatibility with the interactive website framework and centralized database integration. Implement mechanisms for model updates and version control.
+G. Testing and Validation: Test the deployed models within the system environment to ensure functionality and performance. Validate model predictions against real-world scenarios and user interactions.
+H. Monitoring and Maintenance: Implement monitoring mechanisms to track model performance and system usage over time. Perform regular maintenance tasks such as model retraining, database updates, and security patches.
+I. Documentation and Training: Document the entire training pipeline, including data sources, preprocessing steps, model architecture, and deployment process. Provide training sessions for system administrators and end-users on how to interact with the system effectively and interpret model outputs.
+
+Training pipeline for dataset training/testing split:
+A. Data Preprocessing: Load the dataset containing prisoners' information, visitor records, user accounts, etc. To deal with missing values, outliers, and inconsistencies, clean up your data. When necessary, normalize numerical features and encode category variables. Split the dataset into features (input variables) and target variables (labels).
+B. Dataset Exploration: Explore the distribution of target variables (e.g., parole eligibility). Visualize relationships between features and targets to understand potential patterns.
+C. Dataset Splitting: Split the dataset into training and testing sets using a suitable ratio (e.g., 70% for training and 30% for testing). Ensure that the splitting process maintains the distribution of target variables to avoid data leakage.
+D. Model Training: Select appropriate machine learning models based on the nature of the tasks (e.g., classification for parole eligibility, regression for age prediction). Utilizing the training dataset, train the chosen models. Utilize techniques like cross-validation to assess model performance and tune hyperparameters.
+E. Model Evaluation: Evaluate the trained models using the testing dataset to assess their generalization performance. Calculate evaluation metrics such as accuracy, precision, recall, F1-score, etc., depending on the specific task. Analyze the model's performance using confusion matrices, ROC curves, and other relevant visualizations.
+F. Iterative Model Refinement: Based on the evaluation results, refine the models by adjusting hyperparameters, feature selection, or trying different algorithms. Re-train the refined models using the training dataset. Evaluate the refined models on the testing dataset to validate improvements in performance.
+G. Model Interpretation and Analysis: Interpret the trained models to understand the importance of features and their contributions to predictions. Analyze any biases or limitations observed in the models and dataset. Document insights and findings for further analysis and discussion.
+H. Final Model Selection: Select the best-performing model based on evaluation metrics, interpretability, and practical considerations. Save the final trained model for deployment in the proposed system.
+I. Documentation and Reporting: Document the entire training process, including dataset splitting, model selection, and evaluation results. Prepare a comprehensive report summarizing the training pipeline, model performance, and recommendations for deployment. Share the documentation with stakeholders for review and feedback.
+J. Deployment Preparation: Prepare the final trained model, along with any necessary preprocessing steps, for deployment in the proposed system. Implement mechanisms for model updates and version control to ensure continuous improvement.
+
+4.3.3. Description of the training process
+
+The training process for the face detection and matching system involved the following steps:
+1. Dataset Preparation: We collected a dataset of 840 images containing faces of individuals with varying facial expressions, lighting conditions, and backgrounds. The images were preprocessed to ensure consistency in size, format, and quality.
+2. Model Training: We used a deep learning algorithm to train the model on the prepared dataset. The model was trained to detect faces in images and extract unique facial features for matching purposes.
+3. Final Training: We conducted a final training session using the complete dataset of 840 images. This training session fine-tuned the model's parameters to optimize its performance in face detection and matching tasks.
+Throughout the training process, we monitored the model's progress and made adjustments to the training parameters as needed. The final trained model was evaluated on a separate dataset to assess its accuracy and effectiveness.
+
+A.Accuracy
+Accuracy is a fundamental and most common evaluation metric for any classiﬁcation system, including facial recognition. It measures the overall correctness of the model by quantifying the number of correct predictions made over the total number of predictions.
+In the context of facial recognition systems, a prediction is considered correct if the system correctly identiﬁes or veriﬁes the person in the image. Conversely, a prediction is incorrect if the system fails to recognize the person or falsely identiﬁes them as another individual. Accuracy is an easy-to-understand metric that provides a broad assessment of the system’s performance. However, while accuracy can provide a general idea of how well a facial recognition system is performing, it doesn’t distinguish between false positives (incorrectly identiﬁed faces) and false negatives (faces that were not identiﬁed). Therefore, accuracy is often used in conjunction with other metrics like precision, recall, and speciﬁcity, to provide a more comprehensive evaluation of a facial recognition system’s performance. It is important to note that while striving for high accuracy, we must also ensure that the system does not exhibit any bias. This means that the facial recognition system should be able to accurately identify faces from different ethnic backgrounds, genders, and age groups. Otherwise, the system might be unfairly biased towards certain demographics, leading to ethical concerns and practical inefﬁciencies.
+The accuracy of the model in face detection and matching is reported as 88.1%. This metric signifies the proportion of correctly identified faces by the algorithm out of the total number of faces in the dataset. In practical terms, it implies that the model accurately detected and matched faces in approximately 88.1% of the instances, showcasing its proficiency in identifying facial features and patterns. This high accuracy rate indicates the effectiveness of the model in performing the intended task, providing reliable results for face detection and matching within the specified dataset.
+
+refers to the analysis and presentation of how well a machine learning model performs using specific evaluation metrics.
+
+Application testing involves systematically evaluating a software application to ensure that it meets its intended requirements, functions correctly, and performs reliably under various conditions.
+
+
+Insufficient or Poor Quality Data: If the training dataset is small, unrepresentative, or contains noisy or misleading data, the model may not learn accurate patterns or generalize well to unseen examples.
+
+Complexity of the Task: Some image classification tasks may be inherently difficult due to factors such as class overlap, ambiguous boundaries between classes, or variability within classes (e.g., different poses, lighting conditions, or backgrounds).
+
+Model Architecture and Parameters: The choice of model architecture, hyperparameters, and optimization techniques can significantly impact the model's performance. A poorly designed architecture or suboptimal parameter settings may lead to subpar results.
+
+Overfitting: If the model memorizes the training data rather than learning generalizable patterns, it may perform well on the training set but poorly on unseen data. Overfitting can occur if the model is too complex relative to the size of the training dataset or if it is trained for too many epochs.
+Class Imbalance: If certain classes in the dataset are underrepresented or overrepresented compared to others, the model may exhibit biases towards the majority classes and struggle to accurately classify minority classes.
+
+Unit testing is a software testing technique where individual units or components of the software are tested in isolation.
+The goal of unit testing is to validate that each unit of code (such as functions, methods, or classes) performs as expected and produces the correct output for a given input.
+
+System testing is a level of software testing where the complete and integrated software system is tested as a whole.
+The purpose of system testing is to validate that the software system meets its specified requirements and functions correctly in its intended environment.
+visualization refers to the use of graphical representations to explore and understand the characteristics, patterns, and relationships within a dataset. Visualization plays a crucial role in EDA by providing intuitive and informative ways to summarize, interpret, and communicate complex data structures.
+
+
+
+
+Integration testing is a software testing technique where individual units or components of the software are combined and tested together as a group.
+The goal of integration testing is to verify that the interactions and interfaces between different units or modules work as expected and that they integrate smoothly to form a cohesive system.

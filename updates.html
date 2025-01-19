@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updates</title>
+    <style>
+        body {
+            background-color: rgb(245, 220, 188);
+            margin: 0;
+            padding: 0;
+
+        }
+        .linknav {
+    margin-left: -100px;
+    margin-top: -20px;
+}
+
+.linknav ul {
+    list-style: none;
+    width: 100%;
+}
+
+.linknav li {
+    float: left;
+    position: relative;
+    width: auto;
+    list-style: none;
+}
+
+.linknav a {
+    background-color: rgb(251, 255, 0);
+    display: block;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    color: blue;
+    transition: all 0.2s ease;
+    font-weight: 540;
+}
+
+.linknav li a:hover {
+    background-color: rgb(0, 255, 234);
+}
+.goog-te-gadget img {
+    display: none !important;
+  }
+  .goog-te-combo {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+  }
+  /* Style the dropdown arrow */
+  .goog-te-combo-arrow {
+    display: none; /* Hide the default dropdown arrow */
+  }
+  /* Style the language options */
+  .goog-te-menu-value {
+    font-size: 14px;
+    color: #333;
+  }
+
+#languages {
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: 1;
+}
+
+li:hover #languages {
+    opacity: 1;
+    top: 60px;
+    left: -40px;
+    visibility: visible;
+}
+
+#languages li a:hover {
+    background-color: rgb(253, 143, 0);
+}
+
+#languages li {
+    width: 100%;
+}
+
+        .logo {
+            width: 30%;
+        }
+
+        .title {
+            width: 40%;
+            justify-content: center;
+            background-color: rgb(200, 200, 238);
+            color: black;
+            font-size: 15px;
+            text-align: center;
+            height: 135.5px;
+        }
+
+        .prisoner_image {
+            width: 30%;
+            height: 135.5px;
+        }
+
+        .title h1 {
+            margin-top: -10px;
+            font-size: 35px;
+
+        }
+
+        .header {
+            display: flex;
+
+        }
+
+        .homecontainer {
+            margin-top: -4px;
+            margin-left: 165px;
+            padding: 15px 60px;
+        }
+
+        .not {
+            background-color: rgb(251, 255, 0);
+            text-decoration: none;
+            font-size: 35px;
+            padding: 15px 60px;
+            font-weight: 540;
+        }
+
+        .facts {
+            font-size: 23px;
+            line-height: 1.5;
+        }
+
+        .store {
+            display: flex;
+
+        }
+        .not{
+            font-size: 30px;
+        }
+
+        .not:hover {
+            background-color: aqua;
+
+        }
+
+        h3 {
+            margin-left: 10px;
+        }
+
+        .update {
+            font-size: 23px;
+            margin-left: 20px;
+            line-height: 1.5;
+            text-align: justify;
+            margin-right: 20px;
+        }
+
+        h2 {
+            margin-left: 10px;
+        }
+
+        .facts {
+            margin: 0 20px;
+            text-align: justify;
+        }
+
+
+
+
+        footer {
+            margin-top: 440px;
+            text-align: center;
+            background-color: rgb(41, 41, 41);
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 17px;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<header>
+    <div class="header">
+        <div class="logo">
+            <img src="images/logojpcrop.jpg" alt="Logo" width="100%" height="135px">
+        </div>
+        <div class="title">
+            <h1><br>Jimma Zone Prisoner Information System</h1>
+        </div>
+
+        <div class="prisoner_image">
+            <img src="images/prisoner-image.jpg" alt="Image of Prisoner" width="100%" height="135px">
+        </div>
+    </div>
+</header>
+<div class="store">
+    <div class="homecontainer">
+        <a href="index.html" class="not">Home</a>
+    </div>
+    <nav class="linknav">
+        <ul>
+<li><a href="#languages" class="link">Language</a>
+                <ul id="languages">
+                    <li><div id="google_translate_element"></div></li>
+                    <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                          new google.translate.TranslateElement(
+                            {
+                              pageLanguage: "en",
+                              includedLanguages: "en,am,om",
+                              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                              autoDisplay: false,
+                            },
+                            "google_translate_element"
+                          );
+                  
+                          // Ensure the specific paragraph always displays in English
+                          var englishParagraph = document.getElementById("english_paragraph");
+                          if (englishParagraph) {
+                            google.translate.TranslateElement(
+                              { pageLanguage: "en" },
+                              "english_paragraph"
+                            );
+                          }
+                        }
+                      </script>
+                       <script
+                       type="text/javascript"
+                       src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+                     ></script>
+                    </div>
+                </ul>
+            </li>
+</nav><br><br>
+
+<body>
+
+
+    <h1 style="color: rgba(255, 115, 0, 0.897); margin-top: 0px; text-align: center; font-size: 55px;">Latest updates:
+    </h1>
+    <h2 style="font-size: 45px;">Here are the latest updates</h2>
+    <p class="update">* Our facility (Jimma Prison Administration) has launched a new prisoner information system. It is
+        accessed through a website. The developed system shows the facility's eagerness to modernize and automate how
+        a prisoner information is stored and accessed.
+    </p>
+    <h3 style="font-size: 35px;">Parole</h3>
+    <p class="update">Parole is a system of releasing prisoners before they have served their full sentences. When an
+        individual is
+        granted parole, they are allowed to serve the remainder of their sentence outside of prison, under certain
+        conditions and supervision. These conditions often include regular meetings with a parole(Descipline) officer,
+        adhering to a
+        set of rules, maintaining employment or participating in rehabilitation programs, and refraining from criminal
+        behavior.
+        The primary goals of parole are to facilitate the reintegration of offenders into society, reduce prison
+        overcrowding, and provide opportunities for rehabilitation and supervision. Parole decisions are typically made
+        by a parole board or a similar authority based on factors such as the nature of the offense, the individual's
+        behavior and progress while incarcerated, and the likelihood of successful reintegration into the community.</p>
+    <h3 style="font-size: 30px;">Parole Points</h3>
+    <p class="update">Parole points are a system used to assess the eligibility of prisoners for parole. These points
+        are typically awarded based on various factors such as the severity of the crime, the behavior of the prisoner
+        while incarcerated, participation in rehabilitation programs, and other relevant criteria.
+        Prisoners accumulate or lose points based on their actions and behavior during their time in prison. These
+        points can influence parole decisions, with prisoners who have accrued a sufficient number of points being
+        considered for parole earlier than those with fewer points. The specific criteria and point system can vary
+        depending on the jurisdiction and the policies of the parole board or governing authority.
+        Parole points serve as a tool to evaluate the readiness of prisoners for reintegration into society and to
+        assess the level of risk they may pose if released on parole. They help parole boards make informed decisions
+        about whether an individual should be released early from prison and under what conditions.</p>
+    <h3 style="font-size: 25px;">Parole points in Jimma Zone Prison Administration</h3>
+    <p class="update">In Jimma Zone Prison Administration, we give a well deserved attention to parole points. <br>At our facility, parole
+        points
+        are collected for a prisoner based on the behaviour improvements they show. Inmates are pursued by Descipline
+        officers and the points are also updated by Descipline officers. If a prisoners has accumulated a total of 500 points, after 7 days of further examination, they are given a year
+        of mercy after the parole boards agree. <br> After relese due to mercy years, these inmates are followed further and
+        if they live by the examining standards, they will be released from prison permanently.
+        The prisoner should serve atleast 65% of their sentence years before being a mercy release.
+    </p>
+    <div style="text-align: center;">
+        <img src="images/prison-inside.jpg" alt="Prison inside">
+    </div>
+    <h2 style="font-size: 25px;">World prison facts:</h2>
+    <p>
+    <ol class="facts">
+        <li>There are more than 2.2 million prisoners in the United States of America and more than 1.65 million in
+            China.</li>
+        <li>The world prison population rate, based on United Nations estimates of national population levels, is 144
+            per 100,000.</li>
+        <li>Since the year 2000, the world prison population has grown by almost 20%.</li>
+        <li>The highest prison rates in the world are in the United States, at 724 people per 100,000. In Russia, the
+            rate is 581.</li>
+        <li>Just 23% of released prisoners stay out of prison.</li>
+        <li>The first 72 hours after a person is booked into jail is when they're at the highest risk of death.</li>
+        <li>In Brazil, some inmates have the opportunity to reduce their sentences by reading books and writing book
+            reports. They can reduce their sentence by up to 4 days (up to 48 days per year) for each book they read.
+        </li>
+        <li>In China, rich people can hire body doubles to serve their prison sentences.</li>
+    </ol>
+    </p>
+    <footer>
+        <p>Jimma Zone Prisoner Information System <br>
+            @Jimma Zone Prison Administration <br>
+            All rights recieved
+        </p>
+    </footer>
+</body>
+
+</html>

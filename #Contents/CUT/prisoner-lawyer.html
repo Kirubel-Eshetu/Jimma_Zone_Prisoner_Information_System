@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prisoner Lawyer dashbaord</title>
+    <link rel="stylesheet" href="css/prisoner-lawyer.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jpis">
+            <h2 class="logo">JPIS</h2>
+        </div>
+        <div class="header">
+            <h1>Welcome Prisoner Lawyer</h1>
+            <h2>What would you like to work on today?</h2>
+        </div>
+
+
+        <div class="logout">
+            <button onclick="showConfirmation()" style=" border-radius: 50%; padding:25px; background-color: red; color: white;
+        border: 3px solid black;">Logout</button>
+        </div>
+    </div>
+
+    <div id="confirmationBox" class="confirmation-box">
+        <p>Are you sure you want to logout?</p>
+        <button onclick="logout()" class="confirmyes">Yes</button>
+        <button onclick="hideConfirmation()">No</button>
+    </div>
+
+    <script>
+
+        function showConfirmation() {
+            var confirmationBox = document.getElementById('confirmationBox');
+            confirmationBox.style.display = 'block';
+            //The confirmation box will be displayed
+        }
+
+        function hideConfirmation() {
+            var confirmationBox = document.getElementById('confirmationBox');
+            confirmationBox.style.display = 'none';
+        }
+
+        function logout() {
+            // Perform logout operation here
+            location.href = "logout.php";
+            // Redirect to logout page or perform any other action
+        }
+    </script>
+
+    <div class="container">
+        <div class="lawyertasks">
+            <button id="viewinmateinfo">View prisoner information</button><br><br><br>
+            <script>
+                document.getElementById("viewinmateinfo").onclick = function(){
+                    location.href = 'viewinmateinformation.php';
+                };
+            </script>
+            <button id="appointment">View appointment</button><br><br><br>
+            <script>
+                document.getElementById("appointment").onclick = function () {
+                    location.href = '';
+                };
+            </script>
+
+            <!-- <button id="submitappeal">Submit appeal</button><br><br><br>
+            <script>
+                document.getElementById("submitappeal").onclick = function () {
+                    location.href = '';
+                };
+            </script> -->
+            
+            <!-- <button id="appealresponse">View appeal response</button><br><br><br>
+            <script>
+                document.getElementById("appealresponse").onclick = function(){
+                    location.href = '';
+                };
+            </script>
+            
+        
+         -->
+        </div>
+
+        <div class="imageofdescipline">
+            <img src="Images/Prisoner_lawyer.jpg" alt="Image of Descipline officer " width="650px"
+                height="450px">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

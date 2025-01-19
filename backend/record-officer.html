@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Officer</title>
+    <link rel="stylesheet" href="css/record-officer.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="columndisplay">
+            <div class="jpis">
+                <h2 class="logo">JZPIS</h2>
+            </div>
+            <div class="linked">
+                <nav class="linknav">
+                    <ul>
+                        <li><a href="#languages" class="link">Language</a>
+                            <ul id="languages">
+                                <li>
+                                    <div id="google_translate_element"></div>
+                                </li>
+                                <script type="text/javascript">
+                                    function googleTranslateElementInit() {
+                                        new google.translate.TranslateElement(
+                                            {
+                                                pageLanguage: "en",
+                                                includedLanguages: "en,am,om",
+                                                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                                                autoDisplay: false,
+                                            },
+                                            "google_translate_element"
+                                        );
+
+                                        // Ensure the specific paragraph always displays in English
+                                        var englishParagraph = document.getElementById("english_paragraph");
+                                        if (englishParagraph) {
+                                            google.translate.TranslateElement(
+                                                { pageLanguage: "en" },
+                                                "english_paragraph"
+                                            );
+                                        }
+                                    }
+                                </script>
+                                <script type="text/javascript"
+                
+                    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                </ul>
+                </div>
+        
+            </li>
+            </ul>
+            </nav>
+        </div>
+        <div class="header">
+            <h1>Welcome Record Officer</h1>
+            <h2>What would you like to do today?</h2>
+        </div>
+        <div class="logout">
+            <button onclick="showConfirmation()" style=" border-radius: 50%; padding:25px; background-color: red; color: white;
+        border: 3px solid black;">Logout</button>
+        </div>
+    </div>
+
+    <div id="confirmationBox" class="confirmation-box">
+        <p>Are you sure you want to logout?</p>
+        <button onclick="logout()" class="confirmyes">Yes</button>
+        <button onclick="hideConfirmation()">No</button>
+    </div>
+
+    <script>
+
+        function showConfirmation() {
+            var confirmationBox = document.getElementById('confirmationBox');
+            confirmationBox.style.display = 'block';
+            //The confirmation box will be displayed
+        }
+
+        function hideConfirmation() {
+            var confirmationBox = document.getElementById('confirmationBox');
+            confirmationBox.style.display = 'none';
+        }
+
+        function logout() {
+            // Perform logout operation here
+            location.href = "logout.php";
+            // Redirect to logout page or perform any other action
+        }
+    </script>
+
+    <div class="maincontainer">
+        <div class="recordofficertasks">
+
+            <button id="manage">Manage Inmate Information</button><br><br><br>
+            <script>
+                document.getElementById("manage").onclick = function () {
+                    location.href = 'prisoner-operations.php';
+                }
+            </script>
+            <button id="cell">Prison Cell Management</button><br><br><br>
+            <script>
+                document.getElementById("cell").onclick = function () {
+                    location.href = 'cellmanagement.php';
+                }
+            </script>
+        </div>
+        <div class="imageofrecord">
+            <img src="Images/Record_officer.jpg" alt="Image of a prisoner information system Record Officer" width="650px"
+                height="450px">
+        </div>
+    </div>
+
+</body>
+</html>

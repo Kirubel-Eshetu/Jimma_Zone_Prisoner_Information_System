@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url('../Images/forviewpriinfor.jpg');
+    background-size: cover;
+}
+table, th, td{
+    border: 2px solid black;
+    border-collapse: collapse;
+
+}
+
+table{
+    margin-left: 25px;
+    margin-top: 10px;
+    margin-right: auto;
+    width: 3500px;
+    text-align: center;
+    
+}
+
+th,td:not(.images){
+    padding: 10px;
+}
+th:not(.widthadd){
+    background-color: rgb(148, 1, 1);
+    color: white;
+    font-size: 20px;
+}
+td, .widthadd{
+    background-color: rgb(255, 230, 193);
+}

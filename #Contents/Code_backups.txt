@@ -1,0 +1,1981 @@
+login.php
+
+<?php
+include 'backend/connection.php';
+include 'PHPMailer/sendemail.php';
+
+if (isset($_POST['generateOTP'])) {
+    $_POST['checkotp'];
+}
+
+if (isset($_POST['login_btn'])) {
+    $usern = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+
+
+    $sql = "SELECT * FROM users Where username = '$usern'";
+    $result = mysqli_query($con, $sql);
+
+    if ($result->num_rows > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $resultPassword = $row['password'];
+            $role = $row['role'];
+            $status = $row['status'];
+
+            if ($resultPassword == $password && $status == 1) {
+                if ($role == "System Adminstrator") {
+
+                    header('location:admin-dashboard.html');
+                } elseif ($role == "Prison Inspector") {
+                    header('location:prison-inspector.html');
+                } elseif ($role == "Security Manager") {
+                    header('location:security-manager.html');
+                } elseif ($role == "Discipline Officer") {
+                    header('location: discipline-officer.html');
+                } elseif ($role == "Record Officer") {
+                    header("location: record-officer.html");
+                } else {
+                    echo "<h1>Invalid data<h1>";
+                }
+            } elseif ($status != 1) {
+                echo "<script>
+            alert('Your account has been made inactive! Contact the sytem admin through comments and suggestions section.');
+            location.href = '../login.html';
+            </script>";
+            } else {
+                echo "<script>
+            alert('Incorrect Username or password. Access is denied.');
+            location.href = '../login.html';
+            </script>";
+            }
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="images/login-image-2.jpg">
+    <style>
+        #generateOTP {
+            font-size: 21px;
+            border-radius: 35px;
+            margin: auto;
+            margin-bottom: 8px;
+        }
+
+        #checkotp {
+            color: black;
+            margin-bottom: 20px;
+            font-size: 22px;
+            border-radius: 15px;
+            width: 400px;
+            margin-left: 15px;
+            display: none;
+            /* initially hiding the input field */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="images/logojpcrop.jpg" alt="Logo" width="100%" height="135px">
+            </div>
+            <div class="title">
+                <h1><br>Jimma Zone Prisoner Information System</h1>
+            </div>
+
+            <div class="prisoner_image">
+                <img src="images/prisoner-image.jpg" alt="Image of Prisoner" width="100%" height="135px">
+            </div>
+        </div>
+    </header>
+    <nav class="linknav">
+        <ul>
+            <li><a href="index.html" class="not">Home</a></li>
+            <li><a href="#languages">Language</a>
+                <ul id="languages">
+                    <li><a href="#languages">Afan-Oromo</a></li>
+                    <li><a href="#languages">Amharic</a></li>
+                    <li><a href="#languages">English</a></li>
+                </ul>
+            </li>
+
+            <li><a target="_self" href="#" id="button">Login</a></li>
+            <li><a target="_self" href="about-us.html">About Us</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="loginall">
+        <form method="post">
+            <fieldset>
+                <legend>Welcome User</legend>
+                <p style="font-size: 23px;">Please provide with the required informations.</p>
+                <label for="username" style="margin-bottom: 8px; font-size: 22px; text-align: center;">Username <span style="color: red">*</span> </label>
+                <input id="username" type="text" name="username" placeholder="Insert your username" required style="margin-bottom: 20px; font-size: 22px; border-radius: 15px; width: 400px; margin-left: 15px;" autocomplete="off" />
+                <input type="hidden" id="otp" name="generatedotp" readonly>
+                <label for="password" style="margin-bottom: 8px; font-size: 22px; text-align: center;">Password <span style="color: red">*</label>
+                <input id="password" type="password" name="password" placeholder="Password goes here" required style="margin-bottom: 25px; font-size: 22px; border-radius: 15px; width: 400px; margin-left: 15px;" />
+
+                <label for="phone" style="margin-bottom: 8px; font-size: 22px; text-align: center;">Insert Email<span style="color: red">*</label>
+
+                <div class="form">
+                    <input type="email" name="email" id="email" placeholder="Insert email address here" style="color: black;margin-bottom: 20px; font-size: 22px; border-radius: 15px; width: 400px; margin-left: 15px;" autocomplete="off" />
+
+                </div>
+                <button id="generateOTP" name="generateOTP">Send OTP</button>
+                <input type="text" placeholder="Insert otp" name="checkotp" id="checkotp" autocomplete="off">
+
+                <script>
+                    // JavaScript for toggling input field visibility
+                    const generateOTPButton = document.getElementById('generateOTP');
+                    const checkOTPInput = document.getElementById('checkotp');
+
+                    generateOTPButton.addEventListener('click', function() {
+                        // Toggle input field visibility
+                        if (checkOTPInput.style.display === 'none') {
+                            checkOTPInput.style.display = 'block';
+                        } else {
+                            checkOTPInput.style.display = 'none';
+                        }
+                    });
+                </script>
+
+                <!-- <label for="otp" style="margin-bottom: 8px; font-size: 22px; text-align: center;">Insert OTP</label>
+                    <input type="text" name="otpinsert" placeholder="Insert otp here"
+                        style="margin-bottom: 20px; font-size: 22px; border-radius: 15px; width: 250px; margin-left: 15px; margin-left: auto; margin-right: auto;" /> -->
+
+                <div class="showin">
+                    <input type="checkbox" id="show">
+                    <label for="show">Show Password</label>
+                </div>
+
+                <script>
+                    document.getElementById("show").addEventListener("change", function() {
+                        var passwordField = document.getElementById("password");
+                        if (this.checked) {
+                            passwordField.type = "text";
+
+                        } else {
+                            passwordField.type = "password";
+                        }
+                    });
+                </script>
+                <input type="submit" value="Login" id="login-button" class="login_button" name="login_btn" style="font-size: 21px; border-radius: 35px; margin: auto;">
+            </fieldset>
+        </form>
+    </div>
+    <script>
+        document.getElementById("generateOTP").addEventListener("click", function() {
+            var otp = generateOTP();
+            document.getElementById("otp").value = otp;
+        });
+
+        function generateOTP() {
+            var digits = '0123456789';
+            var otpLength = 6;
+            var otp = '';
+
+            for (var i = 0; i < otpLength; i++) {
+                otp += digits[Math.floor(Math.random() * 10)];
+            }
+
+            return otp;
+        }
+    </script>
+    <footer>
+        <p>Jimma Zone Prisoner Information System
+            <br>@Jimma Zone Prison Administration <br>
+            All rights recieved
+        </p>
+    </footer>
+</body>
+
+</html>
+
+
+
+sendemail.php
+
+
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+
+// Start the session
+session_start();
+
+$mail = new PHPMailer(true);
+
+try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'Kirubelwinner@gmail.com';
+    $mail->Password   = 'wykjnqjnovzlexsu';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
+    $mail->Port = 465; 
+
+    $fname = "JTMS";
+    $emailr = "bayoubelay146@gmail.com";
+
+    $mail->setFrom('Kirubelwinner@gmail.com', 'kira');
+    $mail->addAddress($emailr, $fname);
+
+    $mail->isHTML(true);
+
+    $customMessage = 'Hello'.' Your OTP: '.$otp;
+
+    $mail->Subject = 'Jimma Zone Prisoner Information System';
+    $mail->Body    = $customMessage;
+
+    $mail->send();
+    echo 'Email has been sent successfully.';
+} catch (Exception $e) {
+    // Log the error instead of displaying directly to the user
+    error_log("Email could not be sent. Mailer Error: {$mail->ErrorInfo}. Exception Details: " . $e->getMessage());
+    echo 'An error occurred while sending the email. Please try again later.';
+}
+?>
+
+
+
+if I make OTP
+
+<button id="generateOTP" name="generateOTP">Send OTP</button>
+                <input type="text" placeholder="Insert otp" name="checkotp" id="checkotp" autocomplete="off">
+
+                <script>
+                    // JavaScript for toggling input field visibility
+                    const generateOTPButton = document.getElementById('generateOTP');
+                    const checkOTPInput = document.getElementById('checkotp');
+
+                    generateOTPButton.addEventListener('click', function() {
+                        // Toggle input field visibility
+                        if (checkOTPInput.style.display === 'none') {
+                            checkOTPInput.style.display = 'block';
+                        } else {
+                            checkOTPInput.style.display = 'none';
+                        }
+                    });
+                </script>
+
+
+                <label for="otp" style="margin-bottom: 8px; font-size: 22px; text-align: center;">Insert OTP</label>
+                    <input type="text" name="otpinsert" placeholder="Insert otp here"
+                        style="margin-bottom: 20px; font-size: 22px; border-radius: 15px; width: 250px; margin-left: 15px; margin-left: auto; margin-right: auto;" />
+
+
+<script>
+        document.getElementById("generateOTP").addEventListener("click", function() {
+            var otp = generateOTP();
+            document.getElementById("otp").value = otp;
+        });
+
+        function generateOTP() {
+            var digits = '0123456789';
+            var otpLength = 6;
+            var otp = '';
+
+            for (var i = 0; i < otpLength; i++) {
+                otp += digits[Math.floor(Math.random() * 10)];
+            }
+
+            return otp;
+        }
+    </script>
+
+<div class="form">
+                    <input type="email" name="email" id="email" placeholder="Insert email address here" style="color: black;margin-bottom: 20px; font-size: 22px; border-radius: 15px; width: 400px; margin-left: 15px;" autocomplete="off" />
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+active account.php
+<?php
+    include 'connection.php';
+
+    if(isset($_GET['activateid'])){
+
+        $id = $_GET['activateid'];
+        $sql = "SELECT * FROM users";
+    $result = mysqli_query($con, $sql);
+
+    if ($result->num_rows > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $status = $row['status'];
+
+        if($status == 0){
+        $update = "UPDATE users set status = 1 where id='$id'";
+        $activation = mysqli_query($con, $update);
+        
+        if($activation)
+        {
+            echo "<script type='text/javascript'>
+            alert('Account was activated successfully!');
+            location.href = 'manageuser.php';
+            </script>";
+        }
+        else
+        {
+           die(mysqli_error($con));
+        }
+        }
+        elseif($status ==1){
+            echo "<script type='text/javascript'>
+            alert('Account is active!');
+            location.href = 'manageuser.php';
+            </script>";
+        }
+        
+    }
+
+        
+    }
+}
+?>
+
+
+
+
+
+Inactiveaccount.php
+
+<?php
+include 'connection.php';
+
+$sql = "SELECT * FROM users";
+$row = mysqli_query($con, $sql);
+
+if (isset($_GET['inactiveid'])) {
+
+    $id = $_GET['inactiveid'];
+
+    $sql = "SELECT * FROM users";
+    $result = mysqli_query($con, $sql);
+
+    if ($result->num_rows > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $status = $row['status'];
+
+            if ($status == 1) {
+
+                $final = "UPDATE users set status = 0 where id='$id'";
+                $afterinactive = mysqli_query($con, $final);
+
+                if ($afterinactive) {
+                    echo "<script type='text/javascript'>
+            alert('Account was made inactive successfully!');
+            window.location.href = 'manageuser.php';
+            </script>";
+                } else {
+                    die(mysqli_error($con));
+                }
+            } elseif($status !=1) {
+                echo "<script type='text/javascript'>
+            alert('Account is inactive!');
+            window.location.href = 'manageuser.php';
+            </script>";
+            }
+        }
+    }
+}
+
+
+
+admin-dashboard.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin dashboard</title>
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+    <script type="text/javascript">
+        function preventBack() {
+            window.history.forward();
+        }
+        setTimeout("preventBack()", 0);
+        window.onunload = function() {
+            null
+        };
+    </script>
+    
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jpis">
+            <h2 class="logo">JZPIS</h2>
+        </div>
+        <div class="header">
+            <h1>Welcome System Administrator</h1>
+            <h2>What would you like to do today?</h2>
+        </div>
+        <div class="logout">
+            <button onclick="showConfirmation()" style="border-radius: 50%; padding:30px; background-color: red; color: white; border: 3px solid black;">Logout</button>
+        </div>
+    </div>
+
+    <div id="confirmationBox" class="confirmation-box" style="display: none;">
+        <p>Are you sure you want to logout?</p>
+        <button onclick="logout()" class="confirmyes">Yes</button>
+        <button onclick="hideConfirmation()">No</button>
+    </div>
+
+    <script>
+        function showConfirmation() {
+            var confirmationBox = document.getElementById('confirmationBox');
+            confirmationBox.style.display = 'block';
+        }
+
+        function hideConfirmation() {
+            var confirmationBox = document.getElementById('confirmationBox');
+            confirmationBox.style.display = 'none';
+        }
+
+        function logout() {
+            // Perform logout operation here
+            location.href = "logout.php";
+        }
+
+        // Disable caching and prevent back navigation after logout
+        window.onunload = function () {};
+        history.pushState(null, null, location.href);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, location.href);
+        });
+    </script>
+
+    <div class="container">
+        <div class="admintasks">
+
+            <button id="manage">Manage user account</button><br><br><br>
+            <script>
+                document.getElementById("manage").onclick = function () {
+                    location.href = 'manageuser.php';
+                }
+            </script>
+
+            <form action="../backup/database_backup.php" method="post">
+                <button><input type="submit" value="Create backup" name="backup" id="backup"></button>
+            </form><br><br>
+
+            <button id="comments">Comments & Suggestions</button>
+            <script>
+                document.getElementById("comments").onclick = function () {
+                    location.href = 'checkcomment.php';
+                }
+            </script>
+        </div>
+
+        <div class="imageofadmin">
+            <img src="Images/System_Admin.jpg" alt="Image of a prisoner information system Administrator" width="660px" height="460px">
+        </div>
+    </div>
+
+    <script>
+        // Disable caching and prevent back navigation after logout
+        window.onunload = function () {};
+        history.pushState(null, null, location.href);
+        window.addEventListener('popstate', function () {
+            history.pushState(null, null, location.href);
+        });
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+sendemail.php
+<?php
+session_start();
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+
+
+
+$mail = new PHPMailer(true);
+
+try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'Kirubelwinner@gmail.com';
+    $mail->Password   = 'wykjnqjnovzlexsu';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; 
+    $mail->Port = 465; 
+
+    $fname = "JZPIS";
+    $emailr = $_SESSION['email'];
+    $otp = $_SESSION['otp'];
+    $mail->setFrom('Kirubelwinner@gmail.com', 'Legacy-admin');
+    $mail->addAddress($emailr, $fname);
+
+    $mail->isHTML(true);
+
+    $customMessage = 'Hello'.' Your OTP is: '.$otp;
+
+    $mail->Subject = 'Jimma Zone Prisoner Information System';
+    $mail->Body    = $customMessage;
+
+    $mail->send();
+    echo 'Email has been sent successfully.';
+} catch (Exception $e) {
+    // Log the error instead of displaying directly to the user
+    error_log("Email could not be sent. Mailer Error: {$mail->ErrorInfo}. Exception Details: " . $e->getMessage());
+    echo 'An error occurred while sending the email. Please try again later.';
+}
+?>
+
+verify-otp.php
+
+<?php
+session_start();
+
+include 'backend/connection.php';
+
+
+if (isset($_POST['login_btn'])) {
+    $usern = $_POST['username'];
+    $password = $_POST['password'];
+    $_SESSION['email'] = $usern;
+    $otp = rand(100000, 999999); // Generating a 6-digit OTP
+    $_SESSION['otp'] = $otp;
+    $_SESSION['pass'] = $password;
+    
+}
+
+include 'PHPMailer/sendemail.php';
+
+if (isset($_POST['submit'])) {
+    $storedOTP = $_SESSION['otp'];
+    $enteredOTP = $_POST['otp'];
+    $usern = $_SESSION['email'];
+    $password = $_SESSION['pass'];
+    // Check if entered OTP matches the stored OTP
+    if ($enteredOTP == $storedOTP) {
+        // Redirect to different pages after checking username and password
+        $sql = "SELECT * FROM users Where username = '$usern'";
+        $result = mysqli_query($con, $sql);
+
+        if ($result->num_rows > 0) {
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $resultPassword = $row['password'];
+                $role = $row['role'];
+                $status = $row['status'];
+
+                if ($resultPassword == $password && $status == 1) {
+                    if ($role == "System Adminstrator") {
+                        header('location:backend/admin-dashboard.html');
+                    } elseif ($role == "Prison Inspector") {
+                        header('location:backend/prison-inspector.html');
+                    } elseif ($role == "Security Manager") {
+                        header('location:backend/security-manager.html');
+                    } elseif ($role == "Discipline Officer") {
+                        header('location: backend/discipline-officer.html');
+                    } elseif ($role == "Record Officer") {
+                        header("location: backend/record-officer.html");
+                    } else {
+                        echo "<h1>Invalid data<h1>";
+                    }
+                } elseif ($status != 1) {
+                    echo "<script>
+                alert('Your account has been made inactive! Contact the sytem admin through comments and suggestions section.');
+                location.href = 'login.php';
+                </script>";
+                } else {
+                    echo "<script>
+                alert('Incorrect Username or password. Access is denied.');
+                location.href = 'login.php';
+                </script>";
+                }
+            }
+        }
+    } else {
+        $error = "Incorrect OTP. Please try again.";
+    }
+}
+// JavaScript to detect popup window closure and redirect to forgot-password.php
+echo '<script>
+    // Function to detect when the popup window is closed
+    function popupClosed() {
+        window.location.href = "forgot-password.php"; // Redirect to forgot-password.php
+    }
+
+    // Add event listener to detect popup window closure
+    window.addEventListener("unload", popupClosed);
+</script>';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP</title>
+
+    <style>
+        /* Styles for the popup container */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .popup-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .otp-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .otp-form h2 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .otp-form p {
+            color: red;
+            margin-bottom: 15px;
+        }
+
+        .otp-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .otp-form input[type="text"] {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .otp-form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .otp-form button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Styles for the cancel button */
+        .otp-form .cancel-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .otp-form .cancel-btn:hover {
+            background-color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="popup-container">
+        <div class="otp-form">
+            <h2>Verify OTP</h2>
+            <?php if (isset($error)) { ?>
+                <p><?php echo $error; ?></p>
+            <?php } ?>
+
+            <form method="post">
+                <label for="otp">Enter OTP:</label>
+                <input type="text" name="otp" id="otp" required>
+                <button type="submit" name="submit">Verify OTP</button>
+                <button class="cancel-btn" onclick="window.location.href='login.php';" type="button">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+search.php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .searchresult{
+            text-align: center;
+            margin-top: 15px;
+            border: 3px solid black;
+            margin: 0 auto;
+            width: 350px;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
+<?php
+include 'connection.php';
+
+if (isset($_POST['query'])) {
+    $query = $_POST['query'];
+
+    // Perform a search query on your database
+    // Replace this with your actual database query
+    $results = $con->query("SELECT * FROM prisoners WHERE CONCAT_WS(' ', prisoner_id, firstname, middlename, lastname) 
+    LIKE '%$query%'");
+    //  , Sex, dob, Region, Zone, 
+    //  Wereda, Medical_status, blood_type, Criminal_record, phone_of_contacting_people, prisoner_image, Entry_Date, Exit_Date, Cell_number, 
+    //  Material_Id, parole_points
+    
+
+    echo "<div class='searchresult'>";
+    if ($results) {
+        while ($row = $results->fetch_assoc()) {
+            echo "<p style='padding-left: 15px;'>Prisoner Id: {$row['prisoner_id']}</p>";  // Output search results
+            echo "<p style='padding-left: 15px;'>Firstname: {$row['firstname']}</p>";
+            echo "<p style='padding-left: 15px;'>Middlename: {$row['middlename']}</p>";
+            echo "<p style='padding-left: 15px;'>Lastname: {$row['lastname']}</p>";
+            echo "<br>";
+            echo "";
+            // echo "<p>{$row['Sex']}</p>";
+            // echo "<p>{$row['dob']}</p>";
+            // echo "<p>{$row['Region']}</p>";
+            // echo "<p>{$row['Zone']}</p>";
+            // echo "<p>{$row['Wereda']}</p>";
+            // echo "<p>{$row['Medical_status']}</p>";
+            // echo "<p>{$row['blood_type']}</p>";
+            // echo "<p>{$row['Criminal_record']}</p>";
+            // echo "<p>{$row['phone_of_contacting_people']}</p>";
+            // echo "<p>{$row['prisoner_image']}</p>";
+            // echo "<p>{$row['Entry_Date']}</p>";
+            // echo "<p>{$row['Exit_Date']}</p>";
+            // echo "<p>{$row['Cell_number']}</p>";
+            // echo "<p>{$row['Material_Id']}</p>";
+            // echo "<p>{$row['parole_points']}</p>";
+
+        }
+        echo"</div>";
+    } 
+    
+    else {
+        echo "<p>No results found</p>";
+    }
+}
+
+
+
+
+
+
+parole.php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parole point</title>
+</head>
+<style>
+    body{
+        background-image: url(Images/forparole.jpg);
+        background-size: cover;
+    }
+    table{
+        width: 700px;
+        margin: 0 auto;
+        height: 300px;
+    }
+    td{
+        text-align: center;
+    }
+    h1{
+        text-align: center;
+    }
+</style>
+<body>
+    <h1>Prisoners with their Parole Points</h1>
+    <table>
+        <tr>
+            <th>PID</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Parole Point</th>
+            <th>Operation</th>
+        </tr>
+<?php
+include'connection.php';
+$sel = "SELECT * FROM prisoners";
+$contain = mysqli_query($con, $sel);
+while($now = mysqli_fetch_assoc($contain)){
+
+    $pid = $now['prisoner_id'];
+            $first = $now['firstname'];
+            $middle = $now['middlename'];
+            $last = $now['lastname'];
+            $parole = $now['parole_points'];
+
+            echo'<tr>
+            <td>'.$pid.'</td>
+            <td>'.$first.'</td>
+            <td>'.$middle.'</td>
+            <td>'.$last.'</td>
+            <td>'.$parole.'</td>
+            </tr>';
+}
+
+
+
+?>
+</table>
+</body>
+</html>
+
+
+report.php
+
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the report on prisoner from the textarea
+    $reportOnPrisoner = $_POST['reportonprisoner'];
+
+    // Include TCPDF library
+    require_once('tcpdf/tcpdf.php');
+
+    // Create new PDF document
+    $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+
+    // Set document information
+    $pdf->SetCreator('Jimma Zone Prisoner Information System');
+    $pdf->SetAuthor('Jimma Zone Prison Administration');
+    $pdf->SetTitle('Report on Prisoner');
+    $pdf->SetSubject('Report on Prisoner');
+
+    // Add a page
+    $pdf->AddPage();
+
+    // Set font
+    $pdf->SetFont('helvetica', '', 12);
+
+    // Write the report on prisoner to the PDF
+    $pdf->MultiCell(0, 10, $reportOnPrisoner);
+
+    // Close and output PDF
+    $pdf->Output('report_on_prisoner.pdf', 'D');
+    exit;
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Generation page</title>
+    <style>
+        h2{
+            color: rgb(4, 4, 158);
+            margin-top: 0;
+        }
+        button{
+            background-color: green;
+            color: white;
+            font-size: 25px;
+            
+        }
+        .div1{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        .div2{
+            text-align: center;
+            margin-top: 25px;
+        }
+        textarea{
+            font-size: 28px;
+            line-height: 32px;
+            border: 3px solid black;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="div1">
+    <h1>Report Generation</h1>
+    <h2>Write the report to generate here.</h2>
+    <form action="" method="post">
+        <textarea name="reportonprisoner" id="inv" cols="83" rows="13.9" autocomplete="off"></textarea>
+    </div>
+        <div class="div2">
+        <button type="submit">Save report as PDF</button>
+    </div>
+    </form>
+
+</body>
+</html>
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prisoner infromation system website">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="images/pis-overview.jpg">
+    <script src="script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="images/logojpcrop.jpg" alt="Logo" width="100%" height="135px">
+            </div>
+            <div class="title">
+                <h1><br>Jimma Zone Prisoner Information System</h1>
+            </div>
+
+            <div class="prisoner_image">
+                <img src="images/prisoner-image.jpg" alt="Image of Prisoner" width="100%" height="135px">
+            </div>
+        </div>
+    </header>
+   
+
+    <nav class="linknav">
+        <ul>
+            <li><a href="#home-click" class="link">Home</a></li>
+            <li><a href="#languages" class="link">Language</a>
+                <ul id="languages">
+                    <!-- <li><a href="amharic/index-amharic.html">Amharic</a></li>
+                    <li><a href="#languages">English</a></li> -->
+                    <!-- <li><a href="oromo/index-oromo.html">Oromo</a></li> -->
+                    <li><div id="google_translate_element"></div></li>
+                    <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                          new google.translate.TranslateElement(
+                            {
+                              pageLanguage: "en",
+                              includedLanguages: "en,am,om",
+                              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                              autoDisplay: false,
+                            },
+                            "google_translate_element"
+                          );
+                  
+                          // Ensure the specific paragraph always displays in English
+                          var englishParagraph = document.getElementById("english_paragraph");
+                          if (englishParagraph) {
+                            google.translate.TranslateElement(
+                              { pageLanguage: "en" },
+                              "english_paragraph"
+                            );
+                          }
+                        }
+                      </script>
+                       <script
+                       type="text/javascript"
+                       src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+                     ></script>
+                    </div>
+                </ul>
+            </li>
+
+            <li><a target="_self" href="login.php" id="button" class="link">Login</a></li>
+            <li><a target="_self" href="about-us.html" class="link">About Us</a></li>
+            <li><a href="contact-us.html" class="link">Contact Us</a></li>
+        </ul>
+    </nav><br><br><br>
+
+    <div class="supercontainer">
+    <div class="additional">
+    <aside>
+        <p><strong>Additional Links</strong></p>
+        <a href="mission.html" style="margin-left: 30px;">Mission</a>
+        <a href="information.html" style="margin-left: 13.5px;">Information</a>
+        <a href="updates.html" style="margin-left: 30px;">Updates</a>
+        
+    </aside>
+</div>
+
+    <div class="imagesarea">
+    <section>
+        <div class="container" id="home-click">
+           <div class="outside_of_prison">
+            <img src="Images/logojp.jpg" alt="Jimma Prison Administration" width="100%" height="400px">
+             </div>
+            <div class="police">
+                <img src="Images/ethiopian-police.jpg" alt="Picture of Ethiopian Police" width="100%" height="400px">
+            </div>
+        </div>
+    </section>
+</div>
+</div>
+
+    <div class="description">
+        
+        <p>: This prisoner Information System is developed for
+            <strong>Jimma Prison Administration.</strong>
+        </p>
+    </div>
+
+    <div class="map-container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.9561266308656!2d36.848310174198!3d7.687857692329307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x17adb9d499c7c769%3A0x137e3862fb165406!2sMana%20Sirreessaa%20Magaalaa%20Jimmaa!5e0!3m2!1sen!2set!4v1710157826446!5m2!1sen!2set"
+            width="80%" height="100%" style="border:0;" allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="time-container">
+        <h2 style="color: #ff5e00;"> Current date and time is: <span id='date-time'></h2>
+        <script>
+
+            setInterval(() => {
+                var dt = new Date();
+                document.getElementById('date-time').innerHTML = dt;
+            }, 1000)
+        </script>
+        
+        
+    </div>
+
+    <footer>
+        <p>Jimma Zone Prisoner Information System
+            <br>@Jimma Zone Prison Administration <br>
+            All rights recieved
+        </p>
+    </footer>
+
+
+
+</body>
+
+</html>
+
+index.css
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(245, 220, 188);
+    padding: 0;
+    overflow-x: hidden;
+    min-height: 100%;
+}
+
+.logo {
+    width: 30%;
+}
+
+.title {
+    width: 40%;
+    justify-content: center;
+    background-color: rgb(200, 200, 238);
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    height: 135.5px;
+}
+
+.prisoner_image {
+    width: 30%;
+    height: 135.5px;
+}
+
+.title h1 {
+    margin-top: 5px;
+}
+
+.header {
+    display: flex;
+    margin-bottom: -20px;
+}
+
+.linknav {
+    margin-left: 100px;
+}
+
+.linknav ul {
+    list-style: none;
+    width: 100%;
+}
+
+.linknav li {
+    float: left;
+    position: relative;
+    width: auto;
+    list-style: none;
+}
+
+.linknav a {
+    background-color: rgb(251, 255, 0);
+    display: block;
+    padding: 15px 60px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    color: blue;
+    transition: all 0.2s ease;
+    font-weight: 540;
+}
+
+.link.clicked {
+    background-color:aqua /* Change this to the desired color */
+  }
+
+
+.linknav li a:hover {
+    background-color: rgb(0, 255, 234);
+}
+.goog-te-gadget img {
+    display: none !important;
+  }
+  .goog-te-combo {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+  }
+  /* Style the dropdown arrow */
+  .goog-te-combo-arrow {
+    display: none; /* Hide the default dropdown arrow */
+  }
+  /* Style the language options */
+  .goog-te-menu-value {
+    font-size: 14px;
+    color: #333;
+  }
+
+#languages {
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: 1;
+}
+
+li:hover #languages {
+    opacity: 1;
+    top: 60px;
+    left: -40px;
+    visibility: visible;
+}
+
+#languages li a:hover {
+    background-color: rgb(253, 143, 0);
+}
+
+#languages li {
+    width: 100%;
+}
+
+
+.supercontainer{
+    display: block;
+    
+}
+aside {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+aside p {
+    font-size: 25px;
+    color: red;
+}
+
+aside a {
+    font-size: 22px;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    color: blue;
+}
+
+.outside_of_prison,
+.police {
+    width: 50%;
+}
+
+.container {
+    background-color: rgb(41, 41, 41);
+    margin-top: -150px;
+    margin-left: 230px;
+    display: flex;
+
+}
+.description{
+    margin-top: 10px; 
+    margin-left: 200px;
+    font-size: 26px;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    width: 1430px;
+    height: 500px;
+    margin-bottom: 0;
+    margin-left: 55px;
+}
+
+.time-container {
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+    text-align: center;
+    background-color: rgb(41, 41, 41);
+    color: rgb(255, 255, 255);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 17px;
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 1024px) {
+    html {
+        height: 100%;
+    }
+    
+    body {
+        margin: 0;
+        background-color: rgb(245, 220, 188);
+        padding: 0;
+        overflow-x: hidden;
+        min-height: 100%;
+    }
+    
+    .logo {
+        width: 30%;
+    }
+    
+    .title {
+        width: 40%;
+        justify-content: center;
+        background-color: rgb(200, 200, 238);
+        color: black;
+        font-size: 10px;
+        text-align: center;
+        height: 135.5px;
+    }
+    
+    .prisoner_image {
+        width: 30%;
+        height: 135.5px;
+    }
+    
+    .title h1 {
+        margin-top: 5px;
+    }
+    
+    .header {
+        display: flex;
+        margin-bottom: -20px;
+        width: 350px;
+    }
+    
+    .linknav {
+        margin-left: 0;
+    }
+    
+    .linknav ul {
+        list-style: none;
+        width: 100%;
+    }
+    
+    .linknav li {
+        float: left;
+        position: relative;
+        width: auto;
+        list-style: none;
+    }
+    
+    .linknav {
+        background-color: rgb(251, 255, 0);
+        display: block;
+        padding: 5px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 15px;
+        color: blue;
+        transition: all 0.2s ease;
+        font-weight: 540;
+    }
+    
+    
+    .linknav li a:hover {
+        background-color: rgb(0, 255, 234);
+    }
+    
+    #languages {
+        opacity: 0;
+        position: absolute;
+        visibility: hidden;
+        z-index: 1;
+    }
+    
+    li:hover #languages {
+        opacity: 1;
+        top: 60px;
+        left: -40px;
+        visibility: visible;
+    }
+    
+    #languages li a:hover {
+        background-color: rgb(253, 143, 0);
+    }
+    
+    #languages li {
+        width: 100%;
+    }
+    
+    .linknav .not:is {
+        background-color: blue;
+    }
+    
+    aside {
+        float: left;
+        margin-right: 10px;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    
+    aside p {
+        font-size: 25px;
+        color: red;
+    }
+    
+    aside a {
+        font-size: 22px;
+        text-decoration: none;
+        display: block;
+        margin-top: 10px;
+        color: blue;
+    }
+    
+    .outside_of_prison,
+    .police {
+        width: 50%;
+    }
+    
+    .container {
+        background-color: rgb(41, 41, 41);
+        margin-top: 115px;
+        margin-left: 0;
+        display: flex;
+    
+    }
+
+    .description{
+        margin-top: 10px; 
+        margin-left: 20px;
+        font-size: 15px;
+    }
+    
+    .map-container {
+        display: flex;
+        justify-content: center;
+        width: 400px;
+        height: 400px;
+        margin-bottom: 0;
+        margin-left: 20px;
+    }
+    
+    .time-container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    footer {
+        text-align: center;
+        background-color: rgb(41, 41, 41);
+        color: rgb(255, 255, 255);
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 17px;
+    }
+}    
+
+Manageuser.php
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage user accounts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .logout {
+            text-decoration: none;
+            color: white;
+            background-color: red;
+            border-radius: 50%;
+            padding: 20px;
+            font-size: 35px;
+        }
+
+        .contain {
+            text-align: center;
+        }
+
+
+        th,
+        td {
+            text-align: center;
+            border: 2px solid black;
+        }
+
+        .update {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .inactive-activate {
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        .ml-20 {
+            margin-left: 90px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="container">
+    <button class="btn btn-primary my-3 ml-20 btn-lg"><a href="register.php" class="text-light">
+                Add user</a></button>
+    </div>
+
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>First name</th>
+                <th>Middle name</th>
+                <th>Last name</th>
+                <th>User name</th>
+                <th>Password</th>
+                <th>Phonenumber</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+
+        <?php
+        include 'connection.php';
+
+        $sql = "Select * from users";
+        $result = mysqli_query($con, $sql);
+        if ($result) {
+
+            while ($row = mysqli_fetch_assoc($result)) {
+
+                $id = $row['id'];
+                $firstname = $row['firstname'];
+                $middlename = $row['middlename'];
+                $lastname = $row['lastname'];
+                $username = $row['username'];
+                $password = $row['password'];
+                $phonenumber = $row['phonenumber'];
+                $role = $row['role'];
+                $status = $row['status'];
+
+                echo ' <tr>
+        <th scope="row">' . $id . '</th>
+        <td>' . $firstname . '</td>
+        <td>' . $middlename . '</td>
+        <td>' . $lastname . '</td>
+        <td>' . $username . '</td>
+        <td>' . $password . '</td>
+        <td>' . $phonenumber . '</td>
+        <td>' . $role . '</td>
+        <td>' . $status . '</td>
+        <td>
+                <div class="update">
+    <button class="btn btn-primary" type="submit" name="update"><a href="update.php? updateid=' . $id . '" class="text-light" style="text-decoration:none;">Update</a></button>
+    
+     </div>
+
+       <div class="inactive-activate">
+       <button class="btn btn-dark" type="submit" name="inactive"><a href="inactive-account.php? inactiveid=' . $id . '" class="text-light" style="text-decoration:none;">Inactive</a></button>
+       <button class="btn btn-success" type="submit" name="activate"><a href="activate-account.php? activateid=' . $id . '" class="text-light" style="text-decoration:none;">Activate</a></button>
+       </div>
+       </td>
+        </tr>';
+            }
+        }
+        ?>
+    </table>
+</body>
+
+</html>
+
+
+viewinmateinfo.php search box
+ <form id="searchForm" style="margin-left: 200px;">
+        <input type="text" id="searchInput" placeholder="Enter your search here" style="font-size: 20px;">
+        <button type="submit" name="searchbtn" style="font-size: 20px;" >Search</button>
+    </form>
+
+    <div id="searchResults"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+
+
+
+
+
+    .verify-otp.php
+
+
+
+    <?php
+session_start();
+
+
+include 'backend/connection.php';
+
+if (isset($_POST['login_btn'])) {
+    $usern    = $_POST['username'];
+    $password = $_POST['password'];
+
+    $_SESSION['email'] = $usern;
+    $otp = rand(100000, 999999); // Generating a 6-digit OTP
+    $_SESSION['otp']   = $otp;
+    $_SESSION['pass']  = $password;
+    include 'PHPMailer/sendemail.php'; 
+}
+
+
+if (isset($_POST['submit'])) {
+    $storedOTP  = $_SESSION['otp'] ?? '';
+    $enteredOTP = $_POST['otp'] ?? '';
+    $usern      = $_SESSION['email'] ?? '';
+    $password   = $_SESSION['pass'] ?? '';
+    // Check if entered OTP matches the stored OTP
+    if ($enteredOTP == $storedOTP) {
+        // Redirect to different pages after checking username and password
+        $sql = "SELECT * FROM users Where username = '$usern'";
+        $result = mysqli_query($con, $sql);
+
+        if ($result->num_rows > 0) {
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $resultPassword = $row['password'];
+                $role = $row['role'];
+                $status = $row['status'];
+
+                if ($resultPassword == $password && $status == 1) {
+                    if ($role == "System Adminstrator") {
+                        header('location:backend/admin-dashboard.html');
+                    } elseif ($role == "Prison Inspector") {
+                        header('location:backend/prison-inspector.html');
+                    } elseif ($role == "Security Manager") {
+                        header('location:backend/security-manager.html');
+                    } elseif ($role == "Discipline Officer") {
+                        header('location: backend/discipline-officer.html');
+                    } elseif ($role == "Record Officer") {
+                        header("location: backend/record-officer.html");
+                    } else {
+                        echo "<h1>Invalid data<h1>";
+                    }
+                } elseif ($status != 1) {
+                    echo "<script>
+                alert('Your account has been made inactive! Contact the sytem admin through comments and suggestions section.');
+                location.href = 'login.php';
+                </script>";
+                } else {
+                    echo "<script>
+                alert('Incorrect Username or password. Access is denied.');
+                location.href = 'login.php';
+                </script>";
+                }
+            }
+        }
+    } else {
+        $error = "Incorrect OTP. Please try again.";
+    }
+}
+// JavaScript to detect popup window closure and redirect to forgot-password.php
+echo '<script>
+    // Function to detect when the popup window is closed
+    function popupClosed() {
+        window.location.href = "forgot-password.php"; // Redirect to forgot-password.php
+    }
+
+    // Add event listener to detect popup window closure
+    window.addEventListener("unload", popupClosed);
+</script>';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verify OTP</title>
+
+    <style>
+        /* Styles for the popup container */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .popup-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .otp-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .otp-form h2 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+
+        .otp-form p {
+            color: red;
+            margin-bottom: 15px;
+        }
+
+        .otp-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .otp-form input[type="text"] {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .otp-form button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .otp-form button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Styles for the cancel button */
+        .otp-form .cancel-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .otp-form .cancel-btn:hover {
+            background-color: #aaa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="popup-container">
+        <div class="otp-form">
+            <h2>Verify OTP</h2>
+            <?php if (isset($error)) { ?>
+                <p><?php echo $error; ?></p>
+            <?php } ?>
+
+            <form method="post">
+                <label for="otp">Enter OTP:</label>
+                <input type="text" name="otp" id="otp" required>
+                <button type="submit" name="submit">Verify OTP</button>
+                <button class="cancel-btn" onclick="window.location.href='login.php';" type="button">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+login.php
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="images/login-image-2.jpg">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="images/logojpcrop.jpg" alt="Logo" width="100%" height="135px">
+            </div>
+            <div class="title">
+                <h1><br>Jimma Zone Prisoner Information System</h1>
+            </div>
+
+            <div class="prisoner_image">
+                <img src="images/prisoner-image.jpg" alt="Image of Prisoner" width="100%" height="135px">
+            </div>
+        </div>
+    </header>
+    <nav class="linknav">
+        <ul>
+            <li><a href="index.html" class="not">Home</a></li>
+            <li><a href="#languages">Language</a>
+                <ul id="languages">
+                    <li><div id="google_translate_element"></div></li>
+                    <script type="text/javascript">
+                        function googleTranslateElementInit() {
+                          new google.translate.TranslateElement(
+                            {
+                              pageLanguage: "en",
+                              includedLanguages: "en,am,om",
+                              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                              autoDisplay: false,
+                            },
+                            "google_translate_element"
+                          );
+                  
+                          // Ensure the specific paragraph always displays in English
+                          var englishParagraph = document.getElementById("english_paragraph");
+                          if (englishParagraph) {
+                            google.translate.TranslateElement(
+                              { pageLanguage: "en" },
+                              "english_paragraph"
+                            );
+                          }
+                        }
+                      </script>
+                       <script
+                       type="text/javascript"
+                       src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+                     ></script>
+                </ul>
+            </li>
+
+            <li><a target="_self" href="#" id="button">Login</a></li>
+            <li><a target="_self" href="about-us.html">About Us</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="loginall">
+        <form method="post" action="verify-otp.php">
+            <fieldset>
+                <legend>Welcome User</legend>
+                <p style="font-size: 23px;">Please provide with the required informations.</p>
+                
+                <label for="username" style="margin-bottom: 8px; font-size: 22px; text-align: center;">Username (Email) <span style="color: red">*</span> </label>
+                <input id="username" type="email" name="username" placeholder="Insert your username (Email)" required style="margin-bottom: 20px; font-size: 22px; border-radius: 15px; width: 400px; margin-left: 15px;" autocomplete="off" />
+                <input type="hidden" id="otp" name="generatedotp" readonly>
+                <label for="password" style="margin-bottom: 8px; font-size: 22px; text-align: center;">Password <span style="color: red">*</label>
+                <input id="password" type="password" name="password" placeholder="Password goes here" required style="margin-bottom: 25px; font-size: 22px; border-radius: 15px; width: 400px; margin-left: 15px;" />
+                <div class="showin">
+                    <input type="checkbox" id="show">
+                    <label for="show">Show Password</label>
+                </div>
+                <script>
+                    document.getElementById("show").addEventListener("change", function() {
+                        var passwordField = document.getElementById("password");
+                        if (this.checked) {
+                            passwordField.type = "text";
+
+                        } else {
+                            passwordField.type = "password";
+                        }
+                    });
+                </script>
+                <input type="submit" value="Login" id="login-button" class="login_button" name="login_btn" style="font-size: 21px; border-radius: 35px; margin: auto;">
+            </fieldset>
+        </form>
+    </div>
+    <script>
+        document.getElementById("generateOTP").addEventListener("click", function() {
+            var otp = generateOTP();
+            document.getElementById("otp").value = otp;
+        });
+
+        function generateOTP() {
+            var digits = '0123456789';
+            var otpLength = 6;
+            var otp = '';
+
+            for (var i = 0; i < otpLength; i++) {
+                otp += digits[Math.floor(Math.random() * 10)];
+            }
+
+            return otp;
+        }
+    </script>
+    <footer>
+        <p>Jimma Zone Prisoner Information System
+            <br>@Jimma Zone Prison Administration <br>
+            All rights recieved
+        </p>
+    </footer>
+</body>
+
+</html>
+
+
+addcell.php
+<label for="intake">Intake Capacity</label>
+<input type="number" id="intake" name="intake" required style="margin-left: 82px;"><br><br>
+
+<label for="allocated">No of allocated prisoners</label>
+<input type="number" id="allocated" name="allocated" required><br><br>
+
+<label for="freespace">Free Space</label>
+<input type="number" id="freespace" name="freespace" disabled style="margin-left: 120px; "><br><br>
+
+<script>
+    // Function to calculate and update free space
+    function updateFreeSpace() {
+        var intake = parseInt(document.getElementById("intake").value);
+        var allocated = parseInt(document.getElementById("allocated").value);
+        var freespace = intake - allocated;
+
+        // Update the value of the freespace input field
+        document.getElementById("freespace").value = freespace;
+    }
+
+    // Call the function initially to set the initial value
+    updateFreeSpace();
+
+    // Attach an event listener to both intake and allocated fields to update freespace
+    document.getElementById("intake").addEventListener("input", updateFreeSpace);
+    document.getElementById("allocated").addEventListener("input", updateFreeSpace);
+</script>
+
+
+
+
+<input type="submit" name="hitit" value="Add Cell" id="hititson">

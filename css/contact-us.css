@@ -1,0 +1,141 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(245, 220, 188);
+    overflow-x: hidden;
+}
+.logo{
+    width: 30%;
+    margin-bottom: 15px;
+}
+
+.title{
+    width: 40%;
+    justify-content: center;
+    background-color: rgb(200, 200, 238);
+    color: black;
+    font-size: 15px;
+    text-align: center;
+    height: 135.5px;
+}
+
+.prisoner_image{
+    width: 30%;
+    height: 135.5px;
+}
+.title h1{
+    margin-top: 5px;
+}
+
+.header{
+    display: flex;
+    margin-bottom: -20px;
+}
+.linknav{
+    margin-top: -15px;
+    margin-left: 140px;
+    margin-bottom: 15px;
+}
+
+.linknav ul{
+    list-style: none;
+    width: 100%;
+}
+
+.linknav li{
+    float: left;
+    position: relative;
+    width: auto;
+    list-style: none;
+}
+
+.linknav a{
+    background-color: rgb(251, 255, 0);
+    display: block;
+    padding: 15px 60px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    color: blue;
+    transition: all 0.2s ease;
+    font-weight: 540;
+}
+
+
+.linknav li a:hover{
+    background-color: rgb(0, 255, 234);
+}
+
+#languages{
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: 1;
+}
+
+li:hover #languages{
+    opacity: 1;
+    top: 60px;
+    left: -40px;
+    visibility: visible;
+}
+
+#languages li a:hover{
+    background-color: rgb(253, 143, 0);
+}
+
+#languages li{
+    width: 100%;
+}
+
+.address{
+    margin:1.5px auto auto auto;
+    border: 5px dashed green;
+    width: 50%;
+    text-align: center;
+    font-size: 25px;
+}
+
+.comment{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+fieldset{
+    border-radius: 40px;
+    width: 40px;
+    height: 370px;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+footer{
+    text-align: center;
+    background-color: rgb(41, 41, 41);
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 17px;
+    margin-top: auto;
+}
+@media(max-width: 680px){
+    .comment div, .comment legend{
+        font-size: 20px;
+    }
+    .comment textarea{
+        width: 200px;
+    }
+}
+@media(max-width: 500px){
+    .comment div{
+        font-size: 18px;
+    }
+    .comment textarea {
+        width: 180px;
+    }
+    .email-input{
+        width: 100px;
+    }
+}

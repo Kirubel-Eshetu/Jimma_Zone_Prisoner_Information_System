@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission</title>
+
+    <style>
+        body {
+            background-color: rgb(245, 220, 188);
+            margin: 0;
+            padding: 0;
+        }
+
+        .logo {
+            width: 30%;
+        }
+        .homecontainer{
+            margin-top: 31px;
+            margin-left: 200px;
+        }
+        .store{
+            display: flex;
+        }
+
+        .not {
+            background-color: rgb(251, 255, 0);
+            text-decoration: none;
+            font-size: 30px;
+            padding: 15px 60px;
+        }
+
+        .not:hover {
+            background-color: aqua;
+
+        }
+
+        .title {
+            width: 40%;
+            justify-content: center;
+            background-color: rgb(200, 200, 238);
+            color: black;
+            font-size: 15px;
+            text-align: center;
+            height: 135.5px;
+        }
+
+        .prisoner_image {
+            width: 30%;
+            height: 135.5px;
+        }
+        .linknav {
+    margin-left: -50px;
+}
+
+.linknav ul {
+    list-style: none;
+    width: 100%;
+}
+
+.linknav li {
+    float: left;
+    position: relative;
+    width: auto;
+    list-style: none;
+}
+
+.linknav a {
+    background-color: rgb(251, 255, 0);
+    display: block;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+    color: blue;
+    transition: all 0.2s ease;
+    font-weight: 540;
+}
+
+.linknav li a:hover {
+    background-color: rgb(0, 255, 234);
+}
+.goog-te-gadget img {
+    display: none !important;
+  }
+  .goog-te-combo {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #333;
+  }
+  /* Style the dropdown arrow */
+  .goog-te-combo-arrow {
+    display: none; /* Hide the default dropdown arrow */
+  }
+  /* Style the language options */
+  .goog-te-menu-value {
+    font-size: 14px;
+    color: #333;
+  }
+
+#languages {
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+    z-index: 1;
+}
+
+li:hover #languages {
+    opacity: 1;
+    top: 60px;
+    left: -40px;
+    visibility: visible;
+}
+
+#languages li a:hover {
+    background-color: rgb(253, 143, 0);
+}
+
+#languages li {
+    width: 100%;
+}
+
+        .title h1 {
+            margin-top: 5px;
+        }
+
+        .header {
+            display: flex;
+            margin-bottom: -20px;
+        }
+
+
+        footer {
+            text-align: center;
+            background-color: rgb(41, 41, 41);
+            color: rgb(255, 255, 255);
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 17px;
+            margin-top: 333px;
+            margin-bottom: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="images/logojpcrop.jpg" alt="Logo" width="100%" height="135px">
+            </div>
+            <div class="title">
+                <h1><br>Jimma Zone Prisoner Information System</h1>
+            </div>
+
+            <div class="prisoner_image">
+                <img src="images/prisoner-image.jpg" alt="Image of Prisoner" width="100%" height="135px">
+            </div>
+        </div>
+    </header>
+    <div class="store">
+        <div class="homecontainer">
+            <a href="index.html" class="not">Home</a>
+        </div>
+ 
+        <nav class="linknav">
+                <ul>
+        <li><a href="#languages" class="link">Language</a>
+                        <ul id="languages">
+                            <li><div id="google_translate_element"></div></li>
+                            <script type="text/javascript">
+                                function googleTranslateElementInit() {
+                                  new google.translate.TranslateElement(
+                                    {
+                                      pageLanguage: "en",
+                                      includedLanguages: "en,am,om",
+                                      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                                      autoDisplay: false,
+                                    },
+                                    "google_translate_element"
+                                  );
+                          
+                                  // Ensure the specific paragraph always displays in English
+                                  var englishParagraph = document.getElementById("english_paragraph");
+                                  if (englishParagraph) {
+                                    google.translate.TranslateElement(
+                                      { pageLanguage: "en" },
+                                      "english_paragraph"
+                                    );
+                                  }
+                                }
+                              </script>
+                               <script
+                               type="text/javascript"
+                               src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+                             ></script>
+                            </div>
+                        </ul>
+                    </li>
+        </nav>
+    <div>
+        <h1 style="text-align: center; margin-top: 45px; font-size: 50px;">Mission</h1>
+        <div style="text-align: center;">
+            <img src="images/mission.jpg" alt="Mission" width="50%" height="300px">
+        </div>
+        <p style="font-size:20px;">Our Mission is: <br></p>
+        <ul type="disc" style="font-size:21.5px; line-height: 1.5;">
+            <li>To execute penalties imposed by imprisonment sent through convictions or orders.</li>
+            <li>Providing a standardized consultative service to prisoners.</li>
+            <li>Color schemes and various skills training, aimed at transforming the attitude and behavior of inmates.
+            </li>
+            <li>Provision of various basic supplies and services.</li>
+            <li>Helping inmates to lead their lives under the law as peaceful and productive citizens.</li>
+            <li>Assuring that inmates are responsible for protecting themselves from crime and defending themselves
+                against
+                crime.</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>Jimma Zone Prisoner Information System
+            <br>@Jimma Zone Prison Administration <br>
+            All rights recieved
+        </p>
+    </footer>
+</body>
+
+</html>

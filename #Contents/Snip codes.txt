@@ -1,0 +1,282 @@
+For Language Support
+<!-- add this to your header -->
+    <div id="google_translate_element"></div>
+
+    <!-- to your js part -->
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+                'google_translate_element'
+            );
+        } 
+    </script>
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+otp.php
+<!doctype html>
+<?php
+if(isset($_POST['login'])){
+// Authorisation details.
+$username = "otpphp@gmail.com";
+$hash = "3eab60ec988c461f0cfc0e6ed6ed7b0b9bfc0b72e462dfdb2492b447223422d7";
+ 
+// Config variables. Consult http://api.txtlocal.com/docs for more info.
+$test = "0";
+$name =$_POST['name'];
+ 
+// Data for text message. This is the text message data.
+$sender = "API Test"; // This is who the message appears to be from.
+$numbers = $_POST['num']; // A single number or a comma-seperated list of numbers
+$otp=mt_rand(100000,999999);
+setcookie("otp", $otp);
+$message = "Hey ".$name. "your OTP IS ".$otp;
+// 612 chars or less
+// A single number or a comma-seperated list of numbers
+$message = urlencode($message);
+$data = "username=".$username."&hash=".$hash."&message=".$message."&sender=".$sender."&numbers=".$numbers."&test=".$test;
+$ch = curl_init('http://api.txtlocal.com/send/?');
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$result = curl_exec($ch); // This is the result from the API
+echo("OTP SEND SUCCESSFULLY");
+curl_close($ch);
+}
+if(isset($_POST['ver'])){
+$verotp=$_POST['otp'];
+if($verotp==$_COOKIE['otp']){
+echo("logined successfully");
+ 
+}else{
+echo("otp worng");
+}
+}
+?>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+ 
+<body>
+<form method="post" action="phpotp.php">
+<table align="center">
+<tr>
+<td>Name</td>
+<td><input type="text" name="name" placeholder="Enter your Name"</td>
+</tr>
+<tr>
+<td>Phone Number</td>
+<td><input type="text" name="num" placeholder="Valid!with country Code"</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="submit" name="login" value="sign(login)[send otp]" style="background-color: #433396; border: 0px;"</td>
+</tr>
+<tr>
+<td>Verify OTP:</td>
+<td><input type="text" name="otp" placeholder="enter received otp"</td>
+</tr>
+<tr>
+<td></td>
+<td><input type="submit" name="ver" value="verify otp" style="background-color: green; border:0px;"</td>
+</tr>
+</table>
+</form>
+</body>
+</html>
+
+
+
+
+
+Login.php
+if (isset($_POST['login_btn'])) {
+
+    $sql = "SELECT * FROM users Where username = '$usern'";
+    $result = mysqli_query($con, $sql);
+
+    if ($result->num_rows > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $resultPassword = $row['password'];
+            $role = $row['role'];
+            $status = $row['status'];
+
+            if ($resultPassword == $password && $status == 1) {
+
+                if ($role == "System Adminstrator") {
+                    header('location:admin-dashboard.html');
+                } elseif ($role == "Prison Inspector") {
+                    header('location:inspector.html');
+                } elseif ($role == "Security Manager") {
+                    header('location:security-manager.html');
+                } elseif ($role == "Discipline Officer") {
+                    header('location: discipline-officer.html');
+                } elseif ($role == "Record Officer") {
+                    header("location: record-officer.html");
+                } else {
+                    echo "<h1>Invalid data<h1>";
+                }
+            } else {
+                echo "<script>
+                alert('Incorrect Username or password. Access is denied.');
+                location.href = '../login.html';
+                </script>";
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+loginwithotp
+<?php
+
+//including the php file with the connection
+include 'connection.php';
+$usern = $_POST['username'];
+$password = $_POST['password'];
+$verotp = $_POST['otpinsert'];
+
+if (isset($_POST['otp'])) {
+    // Authorisation details.
+    $username = "kirubelwinner@gmail.com";
+    $hash = "9ea0db075772092ff02af6be61088dc9f2e0fdecc3db15d13fe1ffb497c607a2";
+
+    // Config variables.
+    $test = "0";
+
+    // Data for text message. This is the text message data.
+    $sender = "Legacyadmin"; // This is who the message appears to be from.
+    $numbers = $_POST['phoneno']; // A single number or a comma-seperated list of numbers
+    $otp = mt_rand(100000, 999999);
+    setcookie("otp", $otp);
+
+    $message = "Hello," . $usern . "your OTP is :" . $otp;
+    // 612 chars or less
+    // A single number or a comma-seperated list of numbers
+    $message = urlencode($message);
+    $data = "username=" . $username . "&hash=" . $hash . "&message=" . $message . "&sender=" . $sender . "&numbers=" . $numbers . "&test=" . $test;
+    $ch = curl_init('https://api.txtlocal.com/send/?');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = curl_exec($ch); // This is the result from the API
+    echo ("OTP SENT SUCCESSFULLY");
+    // echo "<script>
+    //             alert('OTP sent successfully');
+    //             location.href = '../login.html';
+    //             </script>";
+    curl_error($ch);
+    curl_close($ch);
+}
+
+if (isset($_POST['login_btn'])) {
+
+    $sql = "SELECT * FROM users Where username = '$usern'";
+    $result = mysqli_query($con, $sql);
+
+    if ($result->num_rows > 0) {
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            $resultPassword = $row['password'];
+            $role = $row['role'];
+            $status = $row['status'];
+
+            if ($resultPassword == $password && $status == 1 && $verotp == $_COOKIE['otpinsert']) {
+
+                if ($role == "System Adminstrator") {
+                    header('location:admin-dashboard.html');
+                } elseif ($role == "Prison Inspector") {
+                    header('location:inspector.html');
+                } elseif ($role == "Security Manager") {
+                    header('location:security-manager.html');
+                } elseif ($role == "Discipline Officer") {
+                    header('location: discipline-officer.html');
+                } elseif ($role == "Record Officer") {
+                    header("location: record-officer.html");
+                } else {
+                    echo "<h1>Invalid data<h1>";
+                }
+            } elseif ($status != 1) {
+                echo "<script>
+                alert('Your account has been made inactive! Contact the sytem admin through comments and suggestions.');
+                location.href = '../login.html';
+                </script>";
+            } elseif ($verotp != $_COOKIE['otpinsert']) {
+                echo "<script>
+                alert('Incorrect OTP!');
+                location.href = '../login.html';
+                </script>";
+            } else {
+                echo "<script>
+                alert('Incorrect Username or password. Access is denied.');
+                location.href = '../login.html';
+                </script>";
+            }
+        }
+    }
+}
+
+
+
+
+
+emailotp.php
+
+function sendOTP() {
+	const email = document.getElementById('email');
+	const otpverify = document.getElementsByClassName('otpverify')[0];
+
+	let otp_val = Math.floor(Math.random() * 10000);
+
+	let emailbody = `<h2>Your OTP is </h2>${otp_val}`;
+	Email.send({
+    SecureToken : "fbebd213-4ddf-45d9-b205-3f5313s01cs3",
+    To : email.value,
+    From : "abc@gmail.com",
+    Subject : "Email OTP using JavaScript",
+    Body : emailbody,
+}).then(
+
+	message => {
+		if (message === "OK") {
+			alert("OTP sent to your email " + email.value);
+
+			otpverify.style.display = "flex";
+			const otp_inp = document.getElementById('otp_inp');
+			const otp_btn = document.getElementById('otp-btn');
+
+			otp_btn.addEventListener('click', () => {
+				if (otp_inp.value == otp_val) {
+					alert("Email address verified...");
+				}
+				else {
+					alert("Invalid OTP");
+				}
+			})
+		}
+	}
+);
+}
+

@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url('../Images/forcell.jpg');
+    background-size:cover;
+}
+.search-container {
+    position: relative;
+    margin: 20px auto;
+    width: 500px;
+}
+
+#searchInput {
+    width: calc(100% - 100px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1.5px solid #ccc;
+    border-radius: 8px 0 0 8;
+}
+
+#searchButton {
+    width: 100px;
+    padding: 10px;
+    background-color: #007acc;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+#searchButton:hover {
+    background-color: #005b82;
+}
+
+#searchResults {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-height: 100px;
+    width: calc(100% - 2px);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none;
+}
+
+.result-item {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.result-item:hover {
+    background-color: #f0f0f0;
+}
+.addbtn{
+    margin-left: 255px;
+}
+#addcell{
+    font-size: 21px;
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+
+}
+table{
+    width: 850px;
+    margin:20px auto 0 auto;
+    text-align: center;
+    background-color: rgb(207, 232, 255);
+    height: 95%;
+}
+table,th,td{
+    border: 2px solid rgb(90, 0, 0);
+    border-collapse: collapse;
+}
+th,td{
+    height: 45px;
+    width: 30px;
+}
+.up{
+    text-decoration: none;
+    color: white;
+}
+#upup{
+    background-color: blue;
+    border-radius: 10px;
+    font-size: 21px;
+}
+#google_translate_element{
+    display: none;
+}

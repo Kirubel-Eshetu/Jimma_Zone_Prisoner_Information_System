@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Face-matching Algorithm</title>
+  <!-- Tailwind CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Fontawesome CDN Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Additional CSS or JS files -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+
+  <style>
+    .info_container {
+      margin-left: 50px;
+      border: 1.5px solid black;
+    }
+
+    .wrapper {
+      margin-left: 250px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 10px 10px 10px 20px;
+    }
+
+    footer {
+      text-align: center;
+      background-color: rgb(41, 41, 41);
+      color: rgb(255, 255, 255);
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 17px;
+    }
+    #google_translate_element{
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <section class="bg-center bg-cover"
+    style="background-image: url('https://source.unsplash.com/featured/1280x720/?artificial-intelligence')">
+    <h2 class="text-3xl font-bold text-white" style="text-align: center;">Jimma Zone Prison Administration</h2>
+    <div class="container mx-auto py-48 px-4">
+      <h1 class="text-5xl font-bold text-white mb-8">AI based face detection for prisoners data</h1>
+    </div>
+  </section>
+
+  <h1 class="text-3xl font-bold text-center mt-8">Welcome to face detection system for prisoners data</h1>
+
+  <div class="container">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input class="custom-file-upload" type="file" accept="image" name="image" id="file" />
+      <button class="compress_image" type="submit" id="submitBtn">Search a person</button>
+      <div class="status">
+        <p id="message">{{ message }}</p>
+      </div>
+    </form>
+
+    <div class="wrapper">
+      <img src="{% if image_url %}{{ image_url }}{% else %}{% static 'images/default.png' %}{% endif %}"
+        alt="Compressed Image" width="400px" />
+
+      <div class="info_container">
+        <ul>
+          <li>Name: <span class="name">{{ image.name }}</span></li>
+          <li>Prediction: <span class="type">{{ prediction }}</span></li>
+        </ul>
+      </div>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+  </div>
+
+
+  <!-- Feature Section -->
+  <section class="bg-gray-100 py-24">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Feature Card 1 -->
+        <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+          <i class="fas fa-cloud-upload-alt fa-3x text-blue-500 mb-6"></i>
+          <h2 class="text-xl font-bold mb-4">Easy Integration</h2>
+          <p class="text-gray-500">Easily integrate the face of individual person</p>
+          <a href="#" class="text-blue-500 font-bold mt-4">Learn More</a>
+        </div>
+
+        <!-- Feature Card 2 -->
+        <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+          <i class="fas fa-eye fa-3x text-blue-500 mb-6"></i>
+          <h2 class="text-xl font-bold mb-4">Easier Accessibility</h2>
+          <p class="text-gray-500">Easily access the system through a website page</p>
+          <a href="#" class="text-blue-500 font-bold mt-4">Learn More</a>
+        </div>
+
+        <!-- Feature Card 3 -->
+        <div class="bg-white shadow-lg rounded-lg p-6 text-center">
+          <i class="fas fa-chart-line fa-3x text-blue-500 mb-6"></i>
+          <h2 class="text-xl font-bold mb-4">Analytics and Insights</h2>
+          <p class="text-gray-500">Analyze face detection</p>
+          <a href="#" class="text-blue-500 font-bold mt-4">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="bg-gray-100 py-24">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Our Team Members</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <!-- Blog Post 1 -->
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-4"> Habtamu Gelana</h3>
+          <p class="text-gray-500">Jimma university Fourth year Computer Science student</p>
+          <a href="#" class="text-blue-500 font-bold mt-4">Read More</a>
+        </div>
+
+        <!-- Blog Post 2 -->
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-4">Hikma Sedik</h3>
+          <p class="text-gray-500">Jimma university Graduating class Computer Science student </p>
+          <a href="#" class="text-blue-500 font-bold mt-4">Read More</a>
+        </div>
+
+        <!-- Blog Post 3 -->
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-4">Kalab Girma</h3>
+          <p class="text-gray-500">Jimma university Graduating class Computer Science student</p>
+          <a href="#" class="text-blue-500 font-bold mt-4">Read More</a>
+        </div>
+
+        <!-- Blog Post 4 -->
+        <div class="bg-white shadow-lg rounded-lg p-6">
+          <h3 class="text-xl font-bold mb-4">Kirubel Eshetu</h3>
+          <p class="text-gray-500">Jimma university Graduating class Computer Science student</p>
+          <a href="#" class="text-blue-500 font-bold mt-4">Read More</a>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>Jimma Prisoner Information System
+      <br>@Jimma Prison Administration <br>
+      All rights recieved
+    </p>
+  </footer>
+
+  <div id="google_translate_element"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          includedLanguages: "en,am,om",
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false,
+        },
+        "google_translate_element"
+      );
+
+      // Ensure the specific paragraph always displays in English
+      var englishParagraph = document.getElementById("english_paragraph");
+      if (englishParagraph) {
+        google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "english_paragraph"
+        );
+      }
+    }
+  </script>
+  <script type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+</html>

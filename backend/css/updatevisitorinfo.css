@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('../Images/forsecurity.jpg');
+    background-size: cover;
+}
+
+.formcontainer {
+    width: 45%;
+    margin: auto;
+    text-align: center;
+
+}
+form{
+    font-size: 17px;
+}
+.updatevisit{
+    background-color: rgb(48, 48, 255);
+    color: white;
+    font-size: 18px;
+    border-radius: 60px;
+    padding: 5px;
+}
+
+fieldset {
+    border: 2px solid rgb(0, 0, 41);
+}
+
+legend {
+    margin-bottom: 15px;
+}
+#google_translate_element{
+    display: none;
+}
