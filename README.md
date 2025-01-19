@@ -55,4 +55,6 @@ Since the system was developed for a final year project defense, a detailed docu
 
 -- Here is the homepage of the website (Jimma Zone Prisoner Information System).
 
+![HTML Image](https://github.com/Kira-Legacy/Image_Repo/blob/main/JZPIS%20homepage.png)
+
 
