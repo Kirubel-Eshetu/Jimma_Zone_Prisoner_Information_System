@@ -52,3 +52,7 @@ Since the system was developed for a final year project defense, a detailed docu
 -> Conclusions and Recommendations
 
 :) Take a look at the documentation for yourself: https://github.com/Kira-Legacy/Jimma_Zone_Prisoner_Information_System/blob/main/pdf/FYP-II%20Document%20JZPIS%20final.pdf
+
+-- Here is the homepage of the website (Jimma Zone Prisoner Information System).
+
+
