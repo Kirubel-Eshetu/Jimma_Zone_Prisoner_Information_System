@@ -2,8 +2,6 @@
 
 In this project we demonstrated how to use the tensorflow library to create a neural network that can be used to classify 6 different prisoners.
 
-## [Watch Tutorial](https://youtu.be/MUYh8MCboqw)
-
 ## Classes
 
 ```python
@@ -14,17 +12,6 @@ Myringosclerosis 2
 Normal 3
 
 ```
-
-## Prerequisites
-
-- Knowledge in Python
-- Basic understanding of Django and the Web
-
-## Resources
-
-- [TensorFlow CNN Example](https://www.tensorflow.org/tutorials/images/cnn)
-- [Academy Omen Django Beginner's Tutorial](https://youtu.be/djNrEft8d_I)
-
 ## Tools
 
 - [Python 3](https://www.python.org) : The Python Programming Language
@@ -34,8 +21,6 @@ Normal 3
 ## Setup Instructions
 
 - Download and Install the latest Python 3 on your computer. [Install Now](https://www.python.org/downloads/)
-
-- Get the starter files [here](hhttps://github.com/Academy-Omen/tensored-django/tree/starter)
 
 ```bash
 # Download the start files or Clone the repository
@@ -84,10 +69,10 @@ Just like a teacher will do, we will label each group of images so our kid (aka 
 data=[]
 labels=[]
 
-# Cat 0
+# Prisoner 0
 # Get the animal directory
 cats = os.listdir(os.getcwd() + "/CNN/data/cat")
-for x in cats:
+for x in Adonai_Desalegn:
     """
     Loop through all the images in the directory
     1. Convert to arrays
@@ -95,24 +80,22 @@ for x in cats:
     3. Add image to dataset
     4. Add the label
     """
-    imag=cv2.imread(os.getcwd() + "/CNN/data/cat/" + x)
+    imag=cv2.imread(os.getcwd() + "/CNN/data/Adonai_Desalegn/" + x)
     img_from_ar = Image.fromarray(imag, 'RGB')
     resized_image = img_from_ar.resize((50, 50))
     data.append(np.array(resized_image))
     labels.append(0)
 
-# load in animals and labels
+# load in prisoners and labels
 animals=np.array(data)
 labels=np.array(labels)
 # save
-np.save("animals",animals)
+np.save("prisoners",prisoners)
 np.save("labels",labels)
 
 ```
 
 ## Train the Model
-
-We will use [TensorFlow CNN Example](https://www.tensorflow.org/tutorials/images/cnn) to create our own CNN. Feel free to read more and to fine-tune the algorithm. We start by separating the dataset into train_set (90%) and test_set (10%) which are used for training and validation respectively.
 
 ```python
 # train through 100 times
@@ -140,9 +123,4 @@ python manage.py runserver
 # visit http://localhost:8000/ on your browser
 ```
 
-- We will go ahead and update our settings.py file and then create a view that will perform the prediction and pass it to the frontend.
 
-## Let's Connect
-
-- [Twitter](https://twitter.com/itz_omen/)
-- [Youtube](https://www.youtube.com/channel/UCknaAfNfqKQDQFnqP2zMA6A)
