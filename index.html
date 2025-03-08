@@ -113,20 +113,16 @@
         <div id="datetime"></div>
         <script>
             function updateTime() {
-                // Get the current date and time
                 var now = new Date();
 
-                // Format the date and time
                 var date = now.toDateString();
                 var time = now.toLocaleTimeString();
 
-                // Update the HTML content
                 document.getElementById('datetime').innerHTML = 'Date: ' + date + '<br>Time: ' + time;
             }
 
-            // Call updateTime function to display initial date and time
             updateTime();
-            // Update the time every second (1000 milliseconds)
+
             setInterval(updateTime, 1000);
         </script>
     </div>
