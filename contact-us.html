@@ -33,33 +33,33 @@
                     <!-- <li><a href="#languages">Afan-Oromo</a></li>
                     <li><a href="#languages">Amharic</a></li>
                     <li><a href="#languages">English</a></li> -->
-                    <li><div id="google_translate_element"></div></li>
+                    <li>
+                        <div id="google_translate_element"></div>
+                    </li>
                     <script type="text/javascript">
                         function googleTranslateElementInit() {
-                          new google.translate.TranslateElement(
-                            {
-                              pageLanguage: "en",
-                              includedLanguages: "en,am,om",
-                              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                              autoDisplay: false,
-                            },
-                            "google_translate_element"
-                          );
-                  
-                          // Ensure the specific paragraph always displays in English
-                          var englishParagraph = document.getElementById("english_paragraph");
-                          if (englishParagraph) {
-                            google.translate.TranslateElement(
-                              { pageLanguage: "en" },
-                              "english_paragraph"
+                            new google.translate.TranslateElement(
+                                {
+                                    pageLanguage: "en",
+                                    includedLanguages: "en,am,om",
+                                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                                    autoDisplay: false,
+                                },
+                                "google_translate_element"
                             );
-                          }
+
+                            // Ensure the specific paragraph always displays in English
+                            var englishParagraph = document.getElementById("english_paragraph");
+                            if (englishParagraph) {
+                                google.translate.TranslateElement(
+                                    { pageLanguage: "en" },
+                                    "english_paragraph"
+                                );
+                            }
                         }
-                      </script>
-                       <script
-                       type="text/javascript"
-                       src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-                     ></script>
+                    </script>
+                    <script type="text/javascript"
+                        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                 </ul>
             </li>
 
@@ -92,14 +92,17 @@
                 <legend>For any comments and suggestions write us here:</legend>
                 <div style="display:flex; justify-content: center; margin-bottom: 15px;">
                     <label for="email" style="margin-right: 35px;">Email address </label>
-                    <input type="email" name="email" id="email" style=" width: 350px; height: 25px; font-size: 22px; margin-left:-20px;" required>
+                    <input type="email" name="email" id="email"
+                        style=" width: 350px; height: 25px; font-size: 22px; margin-left:-20px;" required>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 15px;">
                     <label for="comment" style="margin-right: 0;">Comments & suggestions </label>
-                    <textarea name="comment" id="comment" cols="40" rows="8" style="font-size: 22px;" required></textarea>
+                    <textarea name="comment" id="comment" cols="40" rows="8" style="font-size: 22px;"
+                        required></textarea>
                 </div>
                 <div>
-                    <input type="submit" name="submit" style="color: rgb(3, 3, 109); font-size: 22px; border-radius: 50px; padding: 7px; margin-left: 150px;">
+                    <input type="submit" name="submit"
+                        style="color: rgb(3, 3, 109); font-size: 22px; border-radius: 50px; padding: 7px; margin-left: 150px;">
                 </div>
             </fieldset>
         </form>
