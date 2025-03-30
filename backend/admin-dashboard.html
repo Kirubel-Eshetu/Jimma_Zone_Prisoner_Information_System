@@ -35,7 +35,6 @@
                                             "google_translate_element"
                                         );
 
-                                        // Ensure the specific paragraph always displays in English
                                         var englishParagraph = document.getElementById("english_paragraph");
                                         if (englishParagraph) {
                                             google.translate.TranslateElement(
@@ -46,11 +45,10 @@
                                     }
                                 </script>
                                 <script type="text/javascript"
-                
-                    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                </ul>
-                </div>
-        
+                                    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                            </ul>
+            </div>
+
             </li>
             </ul>
             </nav>
@@ -75,7 +73,6 @@
         function showConfirmation() {
             var confirmationBox = document.getElementById('confirmationBox');
             confirmationBox.style.display = 'block';
-            // Disable caching and prevent back navigation after logout
             history.pushState(null, null, location.href);
             window.addEventListener('popstate', function () {
                 history.pushState(null, null, location.href);
@@ -88,7 +85,6 @@
         }
 
         function logout() {
-            // Perform logout operation here
             location.href = "logout.php";
         }
     </script>
