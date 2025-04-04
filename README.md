@@ -1,35 +1,22 @@
 # Jimma_Zone_Prisoner_Information_System
-This system was developed for Final Year Project defense in Jimma University on 2024 .
+This system was developed for Final Year Project defense in Jimma University. The project was started on 30 January, 2024 and got it's end on 14 may, 2024.
 
 The developed system is called Jimma Zone Prisoner Information system (JZPIS). The system 
 is implemented through a website. The website serves a range of functionalities including:
 
 ➢ Providing information about Jimma Zone Prison Administration.
-
 ➢ Serves rules and guidelines for visitors.
-
 ➢ Gives ways people can contact prison personnel.
-
 ➢ Presenting the contents in three languages. Amharic, English and Oromo.
-
 ➢ Adding extra layer of security for logging into user accounts with OTP.
-
 ➢ Managing user accounts.
-
 ➢ Creating backups.
-
 ➢ Visualizing comments and suggestions given.
-
 ➢ Storing Prisoner information securely through a database system.
-
 ➢ Storing visitor information efficiently.
-
 ➢ Parole point evaluation for individual inmate.
-
 ➢ Report and certificate preparation.
-
 ➢ Integrated face-detection and matching system.
-
 ➢ Management of prison cell.
 
 Since the system was developed for a final year project defense, a detailed documentation was also made. The documentation of the project was presented in two phases: 
