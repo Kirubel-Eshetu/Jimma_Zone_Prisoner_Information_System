@@ -29,33 +29,33 @@
             <li><a href="index.html" class="not">Home</a></li>
             <li><a href="#languages">Language</a>
                 <ul id="languages">
-                    <li><div id="google_translate_element"></div></li>
+                    <li>
+                        <div id="google_translate_element"></div>
+                    </li>
                     <script type="text/javascript">
                         function googleTranslateElementInit() {
-                          new google.translate.TranslateElement(
-                            {
-                              pageLanguage: "en",
-                              includedLanguages: "en,am,om",
-                              layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                              autoDisplay: false,
-                            },
-                            "google_translate_element"
-                          );
-                  
-                          // Ensure the specific paragraph always displays in English
-                          var englishParagraph = document.getElementById("english_paragraph");
-                          if (englishParagraph) {
-                            google.translate.TranslateElement(
-                              { pageLanguage: "en" },
-                              "english_paragraph"
+                            new google.translate.TranslateElement(
+                                {
+                                    pageLanguage: "en",
+                                    includedLanguages: "en,am,om",
+                                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                                    autoDisplay: false,
+                                },
+                                "google_translate_element"
                             );
-                          }
+
+                            // Ensure the specific paragraph always displays in English
+                            var englishParagraph = document.getElementById("english_paragraph");
+                            if (englishParagraph) {
+                                google.translate.TranslateElement(
+                                    { pageLanguage: "en" },
+                                    "english_paragraph"
+                                );
+                            }
                         }
-                      </script>
-                       <script
-                       type="text/javascript"
-                       src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-                     ></script>
+                    </script>
+                    <script type="text/javascript"
+                        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                 </ul>
             </li>
 
@@ -79,7 +79,8 @@
     </div>
 
     <div class="detail_div">
-        <p class="detail">The administration of Jimma Zone Prison was founded in 1937. It has been a major part of Ethiopia's
+        <p class="detail">The administration of Jimma Zone Prison was founded in 1937. It has been a major part of
+            Ethiopia's
             history and is among the nation's oldest prisons. Situated in Jimma around Kochi, the facility is
             in charge of overseeing and managing inmates who have been found guilty of a range of offenses.
             <br>
@@ -102,8 +103,7 @@
     </div>
     <br><br>
     <p class="further">If you are interested to take a look at the design of this system <a
-            href="pdf/FYP-II Document JZPIS final.pdf"
-            title="The documentation of the project">click here</a></p>
+            href="pdf/FYP-II Document JZPIS final.pdf" title="The documentation of the project">click here</a></p>
     <br>
     <footer>
         <p>Jimma Zone Prisoner Information System <br>
