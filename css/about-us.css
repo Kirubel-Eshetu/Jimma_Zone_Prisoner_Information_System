@@ -6,12 +6,13 @@ body {
     background-color: rgb(245, 220, 188);
     overflow-x: hidden;
 }
-.logo{
+
+.logo {
     width: 30%;
     margin-bottom: 15px;
 }
 
-.title{
+.title {
     width: 40%;
     justify-content: center;
     background-color: rgb(200, 200, 238);
@@ -21,16 +22,17 @@ body {
     height: 135.5px;
 } 
 
-.prisoner_image{
+.prisoner_image {
     width: 30%;
     height: 135.5px;
 }
-.title h1{
+
+.title h1 {
     margin-top: 5px;
     color: black;
 }
 
-.header{
+.header {
     display: flex;
     margin-bottom: -20px;
 }
@@ -160,15 +162,15 @@ footer {
     font-family: 'Times New Roman', Times, serif;
     font-size: 17px;
 }
-@media(max-width: 538px){
+@media(max-width: 538px) {
     .embed{
         flex-direction: column;
         align-items: center;
     }
-    .gate, .tapela{
+    .gate, .tapela {
         width: 60%;
     }
-    .detail_div{
+    .detail_div {
         width: 80%;
     }
 }
