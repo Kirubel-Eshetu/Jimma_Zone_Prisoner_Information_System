@@ -1,9 +1,10 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background-image: url('../Images/forcell.jpg');
     background-size:cover;
 }
+
 .search-container {
     position: relative;
     margin: 20px auto;
@@ -53,40 +54,48 @@ body{
 .result-item:hover {
     background-color: #f0f0f0;
 }
-.addbtn{
+
+.addbtn {
     margin-left: 255px;
 }
-#addcell{
+
+#addcell {
     font-size: 21px;
     background-color: green;
     border-radius: 10px;
     color: white;
 
 }
-table{
+
+table {
     width: 850px;
     margin:20px auto 0 auto;
     text-align: center;
     background-color: rgb(207, 232, 255);
     height: 95%;
 }
-table,th,td{
+
+table,th,td {
     border: 2px solid rgb(90, 0, 0);
     border-collapse: collapse;
 }
-th,td{
+
+th,td {
     height: 45px;
     width: 30px;
 }
-.up{
+
+.up {
     text-decoration: none;
     color: white;
 }
-#upup{
+
+#upup {
     background-color: blue;
     border-radius: 10px;
     font-size: 21px;
 }
-#google_translate_element{
+
+#google_translate_element {
     display: none;
 }
