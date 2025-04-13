@@ -11,10 +11,12 @@ body {
     text-align: center;
 
 }
-form{
+
+form {
     font-size: 17px;
 }
-.updatevisit{
+
+.updatevisit {
     background-color: rgb(48, 48, 255);
     color: white;
     font-size: 18px;
@@ -29,6 +31,7 @@ fieldset {
 legend {
     margin-bottom: 15px;
 }
-#google_translate_element{
+
+#google_translate_element {
     display: none;
 }
