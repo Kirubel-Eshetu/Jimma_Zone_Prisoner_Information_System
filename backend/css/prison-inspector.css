@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .linknav {
     margin-left: -30px;
     margin-bottom: 60px;
@@ -39,10 +40,12 @@ body {
 .linknav li a:hover {
     background-color: black;
 }
+
 .goog-te-gadget img {
     display: none !important;
   }
-  .goog-te-combo {
+
+.goog-te-combo {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -50,11 +53,11 @@ body {
     background-color: #fff;
     color: #333;
   }
-  /* Style the dropdown arrow */
+  
   .goog-te-combo-arrow {
-    display: none; /* Hide the default dropdown arrow */
+    display: none; 
   }
-  /* Style the language options */
+
   .goog-te-menu-value {
     font-size: 14px;
     color: #333;
@@ -82,7 +85,6 @@ li:hover #languages {
     width: 100%;
 }
 
-
 h1 {
     text-align: center;
     font-size: 47px;
@@ -95,6 +97,7 @@ h2 {
     font-size: 37px;
     margin-bottom: 25px;
 }
+
 .jpis {
     width: 10%;
 }
@@ -105,17 +108,20 @@ h2 {
     margin-top: 10px;
     color: #ff7200;
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
-.header{
+
+.header {
     text-align: center;
     width: 80%;
     margin-left: -80px;
 }
-.logout{
+
+.logout {
     width: 10%;
     margin-top: 40px;
     margin-left: -80px;
@@ -137,11 +143,11 @@ h2 {
     border-radius: 20%;
 }
 
-.confirmation-box p{
+.confirmation-box p {
     font-size: 40px;
 }
 
-.confirmyes{
+.confirmyes {
     margin-right: 60px;
     margin-left: 40px;
 }
@@ -150,6 +156,7 @@ h2 {
  
     font-size: 38px;
 }
+
 .inspectortasks {
     width: 50%;
     margin-left: 100px;
@@ -166,7 +173,7 @@ h2 {
     flex-direction: row;
 }
 
-button{
+button {
     border-radius: 50px;
     padding: 8px;
     background-color: rgb(0, 0, 0);
@@ -174,7 +181,8 @@ button{
     border: 2px solid white;
     font-size: 35px;
 }
-button:hover{
+
+button:hover {
     transform: translate(-5px, -5px);
     transition: all .5s;
 }
