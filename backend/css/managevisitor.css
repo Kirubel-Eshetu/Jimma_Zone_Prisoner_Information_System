@@ -1,9 +1,10 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background-image: url('../Images/forsecurity.jpg');
 }
-#addvisitor{
+
+#addvisitor {
     font-size: 30px;
     margin-left: 50px;
     margin-top: 0px;
@@ -11,13 +12,15 @@ body{
     color: white;
 
 }
-.addvisitor{
+
+.addvisitor {
     background-color: green;
     color: white;
     font-size: 23px;
     margin-left: 70px;
     margin-top: 20px;
 }
+
 .search-container {
     position: relative;
     margin: 20px auto;
@@ -66,52 +69,58 @@ body{
 .result-item:hover {
     background-color: #f0f0f0;
 }
-.tablecontainer{
+
+.tablecontainer {
    display: flex;
    justify-content: center;
    margin-top: 30px;
 }
 
-.tablecontainer td{
+.tablecontainer td {
     background-color: blanchedalmond;
 }
 
-.tablecontainer .visitor{
+.tablecontainer .visitor {
     background-color: blanchedalmond;
 }
-table, th, td{
+
+table, th, td {
     border: 5px solid rgb(0, 0, 0);
     border-collapse: collapse;
 }
-th:not(.visitor){
+
+th:not(.visitor) {
     height: 40px;
     background-color: rgb(255, 106, 0);
 }
-table{
+
+table {
     width: 95%;
     text-align: center;
     margin-bottom: 30px;
 }
-td{
+
+td {
     height: 50px;
 }
-#updatebtn{
+
+#updatebtn {
     background-color: blue;
 }
 
-.updatebtn{
+.updatebtn {
     margin-right: 10px;
     color: white;
     font-size: 19.5px;
     text-decoration: none;
-
 }
-.deletebtn{
-    
+
+.deletebtn {
     color: white;
     font-size: 19.5px;
     text-decoration: none;
 }
-#google_translate_element{
+
+#google_translate_element {
     display: none;
 }
