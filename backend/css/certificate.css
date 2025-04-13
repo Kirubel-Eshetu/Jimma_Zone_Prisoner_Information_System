@@ -50,6 +50,7 @@ button {
 button:hover {
     background-color: #45a049;
 }
-#google_translate_element{
+
+#google_translate_element {
     display: none;
 }
