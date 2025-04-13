@@ -10,8 +10,7 @@ body {
     min-height: 100%;
 }
 
-.logo img{
-    /* width: 30%; */
+.logo img {
     height: 150px;
 }
 
@@ -25,13 +24,15 @@ body {
     height: 150px;
 }
 
-.prisoner_image img{
+.prisoner_image img {
     height: 150px;
 }
-.logo, .prisoner_image{
+
+.logo, .prisoner_image {
     width: 30%;
     
 }
+
 .title h1 {
     margin-top: 5px;
 }
@@ -72,9 +73,11 @@ body {
 .linknav li a:hover {
     background-color: rgb(0, 255, 234);
 }
+
 .goog-te-gadget img {
     display: none !important;
   }
+
   .goog-te-combo {
     padding: 5px;
     border: 1px solid #ccc;
@@ -116,7 +119,7 @@ li:hover #languages {
 }
 
 
-.supercontainer{
+.supercontainer {
     display: block;
     
 }
@@ -151,7 +154,7 @@ aside a {
     display: flex;
 
 }
-.description{
+.description {
     margin-top: 10px; 
     margin-left: 230px;
     font-size: 26px;
@@ -195,40 +198,49 @@ footer {
 }
 
 /* Media queries for responsiveness */
-@media(max-width: 1303px){
+@media(max-width: 1303px) {
     .map-container{
         width: 1200px;
     }
 }
-@media(max-width: 1163px){
+
+@media(max-width: 1163px) {
     .linknav a{
         padding: 15px 25px;
     }
-    .map-container{
+    
+    .map-container {
         width: 1000px;
     }
 }
-@media(max-width: 1011px){
+
+@media(max-width: 1011px) {
     .linknav a{
         padding: 15px 15px;
     }
 }
-@media(max-width: 910px){
-    .linknav a{
+
+@media(max-width: 910px) {
+    
+    .linknav a {
         font-size: 25px;
     }
-    .map-container{
+    
+    .map-container {
         width: 900px;
     }
 }
-@media(max-width: 825px){
-    .linknav a{
+
+@media(max-width: 825px) {
+    .linknav a {
         font-size: 20px;
     }
-    .map-container{
+    
+    .map-container {
         width: 800px;
     }
 }
+
 @media screen and (max-width: 768px) {
     html {
         height: 100%;
@@ -241,33 +253,12 @@ footer {
         overflow-x: hidden;
     }
     
-    /* .logo {
-        width: 30%;
-    } */
-    
-    /* .title {
-        width: 40%;
-        justify-content: center;
-        background-color: rgb(200, 200, 238);
-        color: black;
-        font-size: 10px;
-        text-align: center;
-        height: 135.5px;
-    } */
-    
-    /* .prisoner_image {
-        width: 30%;
-        height: 135.5px;
-    } */
-    
     .title h1 {
         margin-top: 5px;
     }
     
     .header {
         display: flex;
-        /* margin-bottom: -20px;
-        width: 475px; */
     }
     
     .linknav {
@@ -351,10 +342,11 @@ footer {
         color: blue;
     }
     
-    .outside_of_prison{
+    .outside_of_prison {
         width: 200px;
         height: 200px;
     }
+    
     .outside_of_prison,
     .police {
         width: 50%;
@@ -369,7 +361,7 @@ footer {
     
     }
 
-    .description{
+    .description {
         margin-top: 10px; 
         margin-left: 0px;
         font-size: 12px;
@@ -391,50 +383,46 @@ footer {
         justify-content: center;
     }
     
-    /* footer {
-        text-align: center;
-        background-color: rgb(41, 41, 41);
-        color: rgb(255, 255, 255);
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 11px;
-        width: 220px;
-        padding-left: -5px;
-        margin-top: -450px;
-    } */
-    .additional{
+    .additional {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
     }
-    .imagesarea, .description{
+    
+    .imagesarea, .description {
         display: flex;
         justify-content: center;
     }
 }  
-@media(max-width: 656px){
+
+@media(max-width: 656px) {
     .prisoner_image img, .logo img, .title{
         height: 200px;
     }
 } 
-@media(max-width: 538px){
+
+@media(max-width: 538px) {
     .map-container{
         width: 500px;
         height: 350px;
     }
 }
-@media(max-width: 464px){
+
+@media(max-width: 464px) {
     .map-container{
         width: 400px;
     }
 } 
-@media(max-width: 420px){
+
+@media(max-width: 420px) {
     .title{
         font-size: 12px;
     }
 }
-@media(max-width: 330px){
-    .title{
+
+@media(max-width: 330px) {
+    .title {
         font-size: 10px;
     }
 }
