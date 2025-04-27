@@ -1,4 +1,4 @@
-# Jimma_Zone_Prisoner_Information_System
+# Kilinto_Prisoner_Information_System
 This system was developed for Final Year Project defense in Jimma University. The project was started on 30 January, 2024 and got it's end on 14 may, 2024.
 
 The developed system is called Jimma Zone Prisoner Information system (JZPIS). The system 
