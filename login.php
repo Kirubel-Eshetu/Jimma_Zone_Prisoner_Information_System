@@ -131,7 +131,7 @@ if (isset($_POST['login_btn'])) {
                 <input id="username" type="email" name="username" placeholder="Insert your username (Email)" required style="margin-bottom: 20px; font-size: 22px; border-radius: 15px; width: 400px; margin-left: 15px;" autocomplete="off" />
                 <input type="hidden" id="otp" name="generatedotp" readonly>
                 <label for="password" style="margin-bottom: 8px; font-size: 22px; text-align: center;">Password <span style="color: red">*</label>
-                <input id="password" type="password" name="password" placeholder="Password goes here" required style="margin-bottom: 25px; font-size: 22px; border-radius: 15px; width: 400px; margin-left: 15px;" />
+                <input id="password" type="password" name="password" placeholder="Password goes here" required style="margin-bottom: 25px; font-size: 22px; border-radius: 15px; width: 400px; margin-left: 15px;" autocomplete="off"/>
                 <div class="showin">
                     <input type="checkbox" id="show">
                     <label for="show">Show Password</label>
